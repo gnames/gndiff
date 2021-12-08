@@ -1,0 +1,10 @@
+taxonID,name,kingdom,phylum,class,order,family,nomenclaturalCode
+gn_1,,Animalia,Chordata,Aves,,,ICZN
+gn_2,Struthio camelus,Animalia,Chordata,Aves,Struthioniformes,Struthionidae (Ostriches),ICZN
+gn_3,Struthio camelus camelus,Animalia,Chordata,Aves,Struthioniformes,Struthionidae (Ostriches),ICZN
+gn_4,Struthio camelus syriacus,Animalia,Chordata,Aves,Struthioniformes,Struthionidae (Ostriches),ICZN
+gn_5,Struthio camelus massaicus,Animalia,Chordata,Aves,Struthioniformes,Struthionidae (Ostriches),ICZN
+gn_6,Struthio camelus australis,Animalia,Chordata,Aves,Struthioniformes,Struthionidae (Ostriches),ICZN
+gn_7,Struthio molybdophanes,Animalia,Chordata,Aves,Struthioniformes,Struthionidae (Ostriches),ICZN
+gn_8,Rhea americana,Animalia,Chordata,Aves,Rheiformes,Rheidae (Rheas),ICZN
+gn_9,Rhea americana araneipes,Animalia,Chordata,Aves,Rheiformes,Rheidae (Rheas),ICZN
