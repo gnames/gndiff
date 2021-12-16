@@ -12,6 +12,7 @@ import (
 	"github.com/gnames/gndiff/config"
 	"github.com/gnames/gndiff/ent/ingester"
 	"github.com/gnames/gndiff/ent/record"
+	"github.com/gnames/gnparser"
 	"github.com/gnames/gnsys"
 )
 
@@ -69,7 +70,7 @@ func (ing ingestio) Records(path string) ([]record.Record, error) {
 		}
 		res = append(res, rec)
 	}
-	return res, nil
+	return parse(res), nil
 }
 
 func readHeader(s []string) (int, int, int, bool) {
@@ -88,4 +89,18 @@ func readHeader(s []string) (int, int, int, bool) {
 		}
 	}
 	return name, id, family, valid
+}
+
+func parse(recs []record.Record) []record.Record {
+	names := make([]string, len(recs))
+	for i := range recs {
+		names[i] = recs[i].Name
+	}
+	cfg := gnparser.NewConfig(gnparser.OptJobsNum(100))
+	gnp := gnparser.New(cfg)
+	parsed := gnp.ParseNames(names)
+	for i := range recs {
+		recs[i].Parsed = parsed[i]
+	}
+	return recs
 }

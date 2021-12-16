@@ -36,7 +36,9 @@ func TestRecords(t *testing.T) {
 	rec, err := ing.Records(p)
 	assert.Nil(t, err)
 	assert.True(t, len(rec) > 1000)
-	assert.Equal(t, rec[10].Name, "Rhea americana nobilis")
-	assert.Equal(t, rec[10].Family, "Rheidae (Rheas)")
-	assert.Equal(t, rec[10].ID, "gn_11")
+	assert.Equal(t, "Rhea americana nobilis", rec[10].Name)
+	assert.Equal(t, "Rheidae (Rheas)", rec[10].Family)
+	assert.Equal(t, "gn_11", rec[10].ID)
+	assert.True(t, rec[10].Parsed.Parsed)
+	assert.Equal(t, "Rhea american nobil", rec[10].Canonical.Stemmed)
 }
