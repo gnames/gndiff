@@ -10,6 +10,7 @@ require (
 	github.com/gnames/gnlib v0.6.6
 	github.com/gnames/gnparser v1.5.7
 	github.com/gnames/gnsys v0.2.2
+	github.com/gnames/levenshtein v0.2.1
 	github.com/spf13/cobra v1.3.0
 	github.com/stretchr/testify v1.7.0
 	golang.org/x/perf v0.0.0-20211012211434-03971e389cd3
