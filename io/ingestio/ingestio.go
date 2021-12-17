@@ -92,6 +92,7 @@ func readHeader(s []string) (int, int, int, bool) {
 }
 
 func parse(recs []record.Record) []record.Record {
+	res := make([]record.Record, 0, len(recs))
 	names := make([]string, len(recs))
 	for i := range recs {
 		names[i] = recs[i].Name
@@ -101,6 +102,9 @@ func parse(recs []record.Record) []record.Record {
 	parsed := gnp.ParseNames(names)
 	for i := range recs {
 		recs[i].Parsed = parsed[i]
+		if recs[i].Parsed.Parsed {
+			res = append(res, recs[i])
+		}
 	}
-	return recs
+	return res
 }

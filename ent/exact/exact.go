@@ -29,9 +29,6 @@ func (e *exact) Init(recs []record.Record) {
 	bf := baseBloomfilter.New(cfg)
 
 	for i := range recs {
-		if !recs[i].Parsed.Parsed {
-			continue
-		}
 		bf.Add([]byte(recs[i].Canonical.Simple))
 	}
 	e.canonical = bf

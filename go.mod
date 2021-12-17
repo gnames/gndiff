@@ -5,6 +5,7 @@ go 1.17
 require (
 	github.com/devopsfaith/bloomfilter v1.4.0
 	github.com/dgraph-io/badger/v2 v2.2007.4
+	github.com/dvirsky/levenshtein v0.0.0-20200624034316-59b26b61c3c8
 	github.com/gnames/gnfmt v0.2.0
 	github.com/gnames/gnlib v0.6.6
 	github.com/gnames/gnparser v1.5.7
@@ -16,6 +17,7 @@ require (
 )
 
 require (
+	github.com/Shugyousha/mafsa v0.2.0 // indirect
 	github.com/cespare/xxhash v1.1.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgraph-io/ristretto v0.0.3-0.20200630154024-f66de99634de // indirect

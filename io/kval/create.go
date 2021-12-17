@@ -33,9 +33,6 @@ func prepareData(recs []record.Record) map[string][]record.Record {
 	res := make(map[string][]record.Record)
 
 	for i := range recs {
-		if !recs[i].Parsed.Parsed {
-			continue
-		}
 		stem := recs[i].Canonical.Simple
 		res[stem] = append(res[stem], recs[i])
 	}
