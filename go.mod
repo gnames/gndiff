@@ -3,6 +3,7 @@ module github.com/gnames/gndiff
 go 1.17
 
 require (
+	github.com/devopsfaith/bloomfilter v1.4.0
 	github.com/dgraph-io/badger/v2 v2.2007.4
 	github.com/gnames/gnfmt v0.2.0
 	github.com/gnames/gnlib v0.6.6
@@ -44,6 +45,13 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/spf13/viper v1.10.0 // indirect
 	github.com/subosito/gotenv v1.2.0 // indirect
+	github.com/tmthrgd/atomics v0.0.0-20180217065130-6910de195248 // indirect
+	github.com/tmthrgd/go-bitset v0.0.0-20180828125936-62ad9ed7ff29 // indirect
+	github.com/tmthrgd/go-bitwise v0.0.0-20170218093117-01bef038b6bd // indirect
+	github.com/tmthrgd/go-byte-test v0.0.0-20170223110042-2eb5216b83f7 // indirect
+	github.com/tmthrgd/go-hex v0.0.0-20180828131331-d1fb3dbb16a1 // indirect
+	github.com/tmthrgd/go-memset v0.0.0-20180828131805-6f4e59bf1e1d // indirect
+	github.com/tmthrgd/go-popcount v0.0.0-20180111143836-3918361d3e97 // indirect
 	golang.org/x/mod v0.5.1 // indirect
 	golang.org/x/net v0.0.0-20211020060615-d418f374d309 // indirect
 	golang.org/x/sys v0.0.0-20211205182925-97ca703d548d // indirect

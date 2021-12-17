@@ -36,7 +36,7 @@ func prepareData(recs []record.Record) map[string][]record.Record {
 		if !recs[i].Parsed.Parsed {
 			continue
 		}
-		stem := recs[i].Canonical.Stemmed
+		stem := recs[i].Canonical.Simple
 		res[stem] = append(res[stem], recs[i])
 	}
 	return res
