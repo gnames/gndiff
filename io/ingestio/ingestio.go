@@ -76,6 +76,10 @@ func (ing ingestio) Records(path string) ([]record.Record, error) {
 func readHeader(s []string) (int, int, int, bool) {
 	var name, id, family int
 	var valid bool
+	// remove BOM character if exists
+	if len(s) > 0 && len(s[0]) > 3 && s[0][0:3] == "\xef\xbb\xbf" {
+		s[0] = s[0][3:]
+	}
 	for i := range s {
 		field := strings.ToLower(s[i])
 		switch field {

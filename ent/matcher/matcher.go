@@ -5,6 +5,7 @@ import (
 	"github.com/gnames/gndiff/ent/exact"
 	"github.com/gnames/gndiff/ent/fuzzy"
 	"github.com/gnames/gndiff/ent/record"
+	"github.com/gnames/gnlib/ent/verifier"
 )
 
 type matcher struct {
@@ -37,6 +38,9 @@ func (m *matcher) MatchExact(canonical string) ([]record.Record, error) {
 	if m.e.Find(canonical) {
 		res, err = m.db.Select(canonical)
 	}
+	for i := range res {
+		res[i].MatchType = verifier.Exact
+	}
 	return res, err
 }
 
@@ -68,6 +72,7 @@ func (m *matcher) fetchCanonicals(can string, cans []string, noCheck bool) ([]re
 			}
 
 			recs[ii].EditDistance = ed
+			recs[ii].MatchType = verifier.Fuzzy
 			res = append(res, recs[ii])
 		}
 	}
