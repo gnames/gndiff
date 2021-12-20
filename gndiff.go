@@ -2,25 +2,42 @@ package gndiff
 
 import (
 	"github.com/gnames/gndiff/config"
-	"github.com/gnames/gndiff/ent/ingester"
+	"github.com/gnames/gndiff/ent/matcher"
 	"github.com/gnames/gndiff/ent/output"
 	"github.com/gnames/gndiff/ent/record"
 	"github.com/gnames/gnlib/ent/gnvers"
 )
 
 type gndiff struct {
-	Differ
-	ingester.Ingester
-	config.Config
+	cfg config.Config
 }
 
-func New() GNdiff {
-	res := gndiff{}
+func New(cfg config.Config) GNdiff {
+	res := gndiff{
+		cfg: cfg,
+	}
 	return &res
 }
 
-func (gnd *gndiff) Compare(rec1, rec2 []record.Record) []output.Output {
-	return nil
+func (gnd *gndiff) Compare(source, reference []record.Record) (output.Output, error) {
+	var err error
+	var recs []record.Record
+	res := make([]output.Match, len(source))
+	m := matcher.New()
+	err = m.Init(reference)
+	if err != nil {
+		return output.Output{}, err
+	}
+	for i := range source {
+		recs, err = m.Match(source[i])
+		if err != nil {
+			return output.Output{}, err
+		}
+		res[i].SourceRecord = source[i]
+		res[i].ReferenceRecords = recs
+	}
+
+	return output.Output{Matches: res}, nil
 }
 
 // Version function returns version number of `gnparser` and the timestamp

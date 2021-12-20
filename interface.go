@@ -15,5 +15,5 @@ type GNdiff interface {
 }
 
 type Differ interface {
-	Compare([]record.Record, []record.Record) []output.Output
+	Compare([]record.Record, []record.Record) (output.Output, error)
 }

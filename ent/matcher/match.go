@@ -1,7 +1,6 @@
 package matcher
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/gnames/gndiff/ent/record"
@@ -35,7 +34,6 @@ func (m *matcher) partialMatch(can, stem string) ([]record.Record, error) {
 	var res []record.Record
 	var err error
 	cans := partialCombos(can, stem)
-	fmt.Printf("CANS: %#v\n", cans)
 	for i := range cans {
 		res, err = m.MatchExact(cans[i].can)
 		if len(res) > 0 || err != nil {

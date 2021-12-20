@@ -6,9 +6,12 @@ import (
 )
 
 type Record struct {
-	DataSet             string
-	Index, EditDistance int
-	ID, Name, Family    string
-	MatchType           verifier.MatchTypeValue
-	parsed.Parsed
+	DataSet       string                  `json:"dataSet"`
+	Index         int                     `json:"index"`
+	EditDistance  int                     `json:"editDistance"`
+	ID            string                  `json:"id"`
+	Name          string                  `json:"name"`
+	Family        string                  `json:"family"`
+	MatchType     verifier.MatchTypeValue `json:"matchType"`
+	parsed.Parsed `json:"-"`
 }
