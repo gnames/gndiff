@@ -34,7 +34,12 @@ tools: deps
 	@echo Installing tools from tools.go
 	@cat gndiff/tools.go | grep _ | awk -F'"' '{print $$2}' | xargs -tI % go install %
 
-install: 
+build:
+	cd gndiff; \
+	$(GOCLEAN); \
+	$(FLAGS_SHARED) $(NO_C) $(GOBUILD) -o $(BUILD_DIR)
+
+install:
 	cd gndiff; \
 	$(GOCLEAN); \
 	$(FLAGS_SHARED) $(NO_C) $(GOINSTALL)
