@@ -23,16 +23,22 @@ package cmd
 
 import (
 	"fmt"
-	"log"
 	"os"
+	"path/filepath"
 
 	"github.com/gnames/gndiff"
+	"github.com/gnames/gndiff/config"
+	"github.com/gnames/gndiff/ent/output"
+	"github.com/gnames/gndiff/ent/record"
+	"github.com/gnames/gndiff/io/ingestio"
+	"github.com/gnames/gnfmt"
+	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
 	"github.com/spf13/viper"
 )
 
-var cfgFile string
+var quiet bool
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -45,10 +51,31 @@ prints out a match of a reference data to the source data.
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {
+		var opts []config.Option
 		if versionFlag(cmd) {
 			os.Exit(0)
 		}
 
+		quiet, _ = cmd.Flags().GetBool("quiet")
+
+		opts = append(opts, fmtFlag(cmd))
+		cfg := config.New(opts...)
+		gnd := gndiff.New(cfg)
+		if len(args) != 2 {
+			log.Warn("Supply paths to two CSV/TSV files for comparison")
+			_ = cmd.Help()
+			os.Exit(1)
+		}
+		src, ref, err := readFiles(args[0], args[1])
+		if err != nil {
+			log.Fatal(err)
+		}
+		res, err := gnd.Compare(src, ref)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		fmt.Print(output.MatchOutput(res, cfg.Format))
 	},
 }
 
@@ -68,6 +95,8 @@ func init() {
 		"'csv', 'tsv', 'compact', 'pretty'\n" +
 		"default is 'csv'."
 	rootCmd.Flags().StringP("format", "f", "", formatHelp)
+
+	rootCmd.Flags().BoolP("quiet", "q", false, "Do not output info and warning logs.")
 }
 
 // initConfig reads in config file and ENV variables if set.
@@ -91,4 +120,46 @@ func versionFlag(cmd *cobra.Command) bool {
 		return true
 	}
 	return false
+}
+
+func fmtFlag(cmd *cobra.Command) config.Option {
+	f, err := cmd.Flags().GetString("format")
+	if f == "" || err != nil {
+		return config.OptFormat(gnfmt.CSV)
+	}
+
+	switch f {
+	case "csv":
+		return config.OptFormat(gnfmt.CSV)
+	case "tsv":
+		return config.OptFormat(gnfmt.TSV)
+	case "compact":
+		return config.OptFormat(gnfmt.CompactJSON)
+	case "pretty":
+		return config.OptFormat(gnfmt.PrettyJSON)
+	default:
+		if !quiet {
+			log.Warnf("Cannot recognize format '%s', keeping default 'CSV' format.", f)
+		}
+		return config.OptFormat(gnfmt.CSV)
+	}
+}
+
+func readFiles(srcPath, refPath string) ([]record.Record, []record.Record, error) {
+	cfg := config.New()
+	ing := ingestio.New(cfg)
+
+	src := filepath.Join(srcPath)
+	recSrc, err := ing.Records(src)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	ref := filepath.Join(refPath)
+	recRef, err := ing.Records(ref)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return recSrc, recRef, nil
 }

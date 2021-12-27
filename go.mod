@@ -11,7 +11,9 @@ require (
 	github.com/gnames/gnparser v1.5.7
 	github.com/gnames/gnsys v0.2.2
 	github.com/gnames/levenshtein v0.2.1
+	github.com/sirupsen/logrus v1.7.0
 	github.com/spf13/cobra v1.3.0
+	github.com/spf13/viper v1.10.0
 	github.com/stretchr/testify v1.7.0
 	golang.org/x/perf v0.0.0-20211012211434-03971e389cd3
 	golang.org/x/tools v0.1.8
@@ -46,7 +48,6 @@ require (
 	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/spf13/viper v1.10.0 // indirect
 	github.com/subosito/gotenv v1.2.0 // indirect
 	github.com/tmthrgd/atomics v0.0.0-20180217065130-6910de195248 // indirect
 	github.com/tmthrgd/go-bitset v0.0.0-20180828125936-62ad9ed7ff29 // indirect
