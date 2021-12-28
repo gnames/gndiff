@@ -1,4 +1,4 @@
-# `gndiff` app takes two files with scientific names and compares them.
+# `GNdiff` app takes two files with scientific names and compares them.
 
 ## Introduction
 
@@ -6,10 +6,72 @@ It is often useful to compare one checklist to another. This project uses
 pretty much the same algorithms as [GNverifier], but does not require an
 external database and can be used offline.
 
+## Installation
+
+### Using Homebrew on Mac OS X, Linux, and Linux on Windows ([WSL2])
+
+Homebrew is a popular package manager for Open Source software originally
+developed for Mac OS X. Now it is also available on Linux, and can easily
+be used on Windows 10, if Windows Subsystem for Linux (WSL) is
+[installed][WSL install].
+
+To use `GNdiff` with Homebrew:
+
+1. Install [Homebrew]
+
+2. Open terminal and run the following commands:
+
+```bash
+brew tap gnames/gn
+brew install gndiff
+```
+
+### MS Windows
+
+Download the latest [GNdiff release], unzip.
+
+One possible way would be to create a default folder for executables and place
+``GNdiff`` there.
+
+Use ``Windows+R`` keys
+combination and type "``cmd``". In the appeared terminal window type:
+
+```cmd
+mkdir C:\Users\your_username\bin
+copy path_to\gndiff.exe C:\Users\your_username\bin
+```
+
+[Add ``C:\Users\your_username\bin`` directory to your ``PATH``][winpath]
+environment variable.
+
+Another, simpler way, would be to use ``cd C:\Users\your_username\bin`` command
+in ``cmd`` terminal window. The ``GNdiff`` program then will be automatically
+found by Windows operating system when you run its commands from that
+directory.
+
+### Linux and Mac
+
+Download the latest [GNdiff release], untar, and install binary somewhere
+in your path.
+
+```bash
+tar xvf gndiff-linux-0.1.1.tar.gz
+# or tar xvf gndiff-mac-0.1.1.tar.gz
+sudo mv gndiff /usr/local/bin
+```
+
+### Compile from source
+
+Install Go according to [installation instructions][go-install]
+
+```bash
+go get github.com/gnames/gndiff/gndiff
+```
+
 ## Usage
 
 If you need to compare a list of names with a data-set that exists as a
-[GNverifier data-source] use [GNverifier] instead like this:
+[GNverifier data-source] use [GNverifier]:
 
 ```bash
 gnvrifier names.txt -o -s 12
@@ -94,5 +156,10 @@ gndiff source.txt ref.txt 2> /dev/null
 ```
 
 
-[GNverifier]: https://github.com/gnames/gnverifier
+[GNdiff release]: https://github.com/gnames/gndiff/releases/latest
+[GNdiff]: https://github.com/gnames/gndiff
 [GNverifier data-source]: https://verifier.globalnames.org/data_sources
+[GNverifier]: https://github.com/gnames/gnverifier
+[Homebrew]: https://brew.sh/
+[WSL install]: https://docs.microsoft.com/en-us/windows/wsl/install-win10
+[winpath]: https://www.computerhope.com/issues/ch000549.htm
