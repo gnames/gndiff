@@ -23,7 +23,7 @@ Prepare two files with names. There are 3 possible file formats:
 
 * A simple lists of scientific names, one name per line
 * Comma-separated or Tab-separated (CSV/TSV) file with a `ScientificName`
-  field. Fields `TaxonID` and `Family` are also ingested, if given, any
+  field. Fields `TaxonID` and `Family` are also ingested if given, any
   capitalization of the fields names is accepted.
 
 The first of the two files should contain names that need to be matched.
