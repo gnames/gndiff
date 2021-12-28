@@ -1,5 +1,7 @@
 # Changelog
 
+- Add [#10]: show csv/tsv header in the output.
+
 ## [v0.1.1]
 
 - Add [#9]: allow to take TSV files and simple names lists.

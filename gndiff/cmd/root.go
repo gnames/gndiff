@@ -81,6 +81,10 @@ fields are also ingested.
 			log.Fatal(err)
 		}
 
+		switch cfg.Format {
+		case gnfmt.CSV, gnfmt.TSV:
+			fmt.Println(output.CSVHeader(cfg.Format))
+		}
 		fmt.Print(output.MatchOutput(res, cfg.Format))
 	},
 }
