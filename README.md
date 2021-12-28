@@ -162,4 +162,5 @@ gndiff source.txt ref.txt 2> /dev/null
 [GNverifier]: https://github.com/gnames/gnverifier
 [Homebrew]: https://brew.sh/
 [WSL install]: https://docs.microsoft.com/en-us/windows/wsl/install-win10
+[go-install]: https://golang.org/doc/install
 [winpath]: https://www.computerhope.com/issues/ch000549.htm
