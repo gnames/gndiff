@@ -15,13 +15,14 @@ If you need to compare a list of names with a data-set that exists as a
 gnvrifier names.txt -o -s 12
 ```
 
-where `-s` flag provides Id of required [GNverifier data-source]
+where `-s` option provides Id of required [GNverifier data-source], and `-o`
+flag limits restuls to the selected data-source.
 
 ### Compare Files
 
 Prepare two files with names. There are 3 possible file formats:
 
-* A simple lists of scientific names, one name per line
+* A simple list of scientific names, one name per line.
 * Comma-separated or Tab-separated (CSV/TSV) file with a `ScientificName`
   field. Fields `TaxonID` and `Family` are also ingested if given, any
   capitalization of the fields names is accepted.
