@@ -1,0 +1,10 @@
+taxonID	scientificName	kingdom	phylum	class	order	family	genus	nomenclaturalCode
+gn_1	Struthio camelus Linnaeus, 1758	Animalia	Chordata	Aves	Struthioniformes	Struthionidae	Struthio	ICZN
+gn_2	Struthio molybdophanes Reichenow, 1883	Animalia	Chordata	Aves	Struthioniformes	Struthionidae	Struthio	ICZN
+gn_3	Rhea americana (Linnaeus, 1758)	Animalia	Chordata	Aves	Rheiformes	Rheidae	Rhea	ICZN
+gn_4	Rhea pennata d'Orbigny, 1837	Animalia	Chordata	Aves	Rheiformes	Rheidae	Rhea	ICZN
+gn_5	Apteryx australis Shaw, 1813	Animalia	Chordata	Aves	Apterygiformes	Apterygidae	Apteryx	ICZN
+gn_6	Apteryx mantelli A. D. Bartlett, 1852	Animalia	Chordata	Aves	Apterygiformes	Apterygidae	Apteryx	ICZN
+gn_7	Apteryx rowi Tennyson, Palma, H. A. Robertson, Worthy & B. J. Gill, 2003	Animalia	Chordata	Aves	Apterygiformes	Apterygidae	Apteryx	ICZN
+gn_8	Apteryx owenii Gould, 1847	Animalia	Chordata	Aves	Apterygiformes	Apterygidae	Apteryx	ICZN
+gn_9	Apteryx haastii Potts, 1872	Animalia	Chordata	Aves	Apterygiformes	Apterygidae	Apteryx	ICZN

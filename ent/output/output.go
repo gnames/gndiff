@@ -7,6 +7,7 @@ import (
 
 	"github.com/gnames/gndiff/ent/record"
 	"github.com/gnames/gnfmt"
+	"github.com/gnames/gnlib/ent/verifier"
 )
 
 type Output struct {
@@ -84,9 +85,26 @@ func csvRow(m Match, sep rune) []string {
 		}
 		res = append(res, gnfmt.ToCSV(row, sep))
 	}
+	if len(r) == 0 {
+		row := []string{
+			s.DataSet,
+			strconv.Itoa(s.Index),
+			s.ID,
+			s.Name,
+			"",
+			verifier.NoMatch.String(),
+			"",
+			"",
+			"",
+			"",
+		}
+		res = append(res, gnfmt.ToCSV(row, sep))
+	}
 	return res
 }
 
 func jsonOutput(o Output, pretty bool) string {
-	return ""
+	enc := gnfmt.GNjson{Pretty: pretty}
+	res, _ := enc.Encode(o)
+	return string(res)
 }

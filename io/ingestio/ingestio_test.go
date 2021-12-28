@@ -42,3 +42,25 @@ func TestRecords(t *testing.T) {
 	assert.True(t, rec[9].Parsed.Parsed)
 	assert.Equal(t, "Rhea american nobil", rec[9].Canonical.Stemmed)
 }
+
+func TestTSV(t *testing.T) {
+	cfg := config.New()
+	ing := ingestio.New(cfg)
+
+	p := filepath.Join(path, "ioc-bird.tsv")
+	rec, err := ing.Records(p)
+	assert.Nil(t, err)
+	assert.True(t, len(rec) > 2)
+	assert.Equal(t, "Rhea americana (Linnaeus, 1758)", rec[2].Name)
+}
+
+func TestNamesList(t *testing.T) {
+	cfg := config.New()
+	ing := ingestio.New(cfg)
+
+	p := filepath.Join(path, "names.txt")
+	rec, err := ing.Records(p)
+	assert.Nil(t, err)
+	assert.True(t, len(rec) > 2)
+	assert.Equal(t, "Rhea americana (Linnaeus, 1758)", rec[2].Name)
+}

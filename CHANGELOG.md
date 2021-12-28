@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.1.1]
+
+- Add [#9]: allow to take TSV files and simple names lists.
+
 ## [v0.1.0]
 
 - Add [#8]: make command line application.
@@ -15,7 +19,7 @@
 
 This document follows [changelog guidelines]
 
-[v0.2.0]: https://github.com/gnames/gndiff/compare/v0.1.0...v0.2.0
+[v0.1.1]: https://github.com/gnames/gndiff/compare/v0.1.0...v0.1.1
 [v0.1.0]: https://github.com/gnames/gndiff/tree/v0.1.0
 
 [#20]: https://github.com/gnames/gndiff/issues/20

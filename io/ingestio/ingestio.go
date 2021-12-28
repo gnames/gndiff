@@ -1,6 +1,7 @@
 package ingestio
 
 import (
+	"bufio"
 	"encoding/csv"
 	"errors"
 	"fmt"
@@ -39,13 +40,28 @@ func (ing ingestio) Records(path string) ([]record.Record, error) {
 		return nil, err
 	}
 	defer f.Close()
-	r := csv.NewReader(f)
 
-	// skip header
+	records, sep, err := tryNamesOnly(f, fileName)
+	if err != nil {
+		return nil, err
+	}
+
+	if records != nil {
+		return records, nil
+	}
+
+	if sep == rune(0) {
+		return nil, errors.New("cannot determine field separator")
+	}
+
+	r := csv.NewReader(f)
+	r.Comma = sep
+
 	header, err := r.Read()
 	if err != nil {
 		return nil, err
 	}
+
 	name, id, family, valid := readHeader(header)
 	if !valid {
 		return nil, errors.New("the CSV file needs `scientifiName` field")
@@ -111,4 +127,40 @@ func parse(recs []record.Record) []record.Record {
 		}
 	}
 	return res
+}
+
+func tryNamesOnly(f *os.File, fileName string) ([]record.Record, rune, error) {
+	var res []record.Record
+	scanner := bufio.NewScanner(f)
+
+	var count int
+
+	for scanner.Scan() {
+		line := scanner.Text()
+		if count == 0 {
+			sep := fileSep(line)
+			if sep != rune(0) {
+				f.Seek(0, io.SeekStart)
+				return nil, sep, nil
+			}
+		}
+
+		res = append(res, record.Record{DataSet: fileName, Index: count, Name: line})
+		count++
+	}
+
+	if err := scanner.Err(); err != nil {
+		return res, rune(0), err
+	}
+	return parse(res), rune(0), nil
+}
+
+func fileSep(s string) rune {
+	if strings.Contains(s, "\t") {
+		return '\t'
+	} else if !strings.Contains(s, ",") || strings.Contains(s, " ") {
+		return rune(0)
+	} else {
+		return ','
+	}
 }

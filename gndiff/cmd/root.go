@@ -45,8 +45,14 @@ var rootCmd = &cobra.Command{
 	Use:   "gndiff source_file reference_file",
 	Short: "Compares two files with scientific names.",
 	Long: `
-Extracts scientific names, their IDs and families from a CSV/TSV file and
-prints out a match of a reference data to the source data.
+Extracts scientific names, their IDs and families the source and reference
+files and prints out a match of a reference data to the source data.
+
+The files can be in comma-separated (CSV), tab-separated (TSV) formats, or
+just contain name-strings only (one per line).
+
+TSV/CSV files must contain 'ScientificName' field, 'Family' and 'TaxonID'
+fields are also ingested.
 `,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
