@@ -1,14 +1,14 @@
-# `gndiff` app takes two files with scientific names, compares them and returns the result.
+# `gndiff` app takes two files with scientific names and compares them.
 
 ## Introduction
 
-It is often useful to compare one check-list to another. This project follows
+It is often useful to compare one checklist to another. This project uses
 pretty much the same algorithms as [GNverifier], but does not require an
-external database and can be used off-line.
+external database and can be used offline.
 
 ## Usage
 
-If you need to compare a list of names with a data-set that is imported as a
+If you need to compare a list of names with a data-set that exists as a
 [GNverifier data-source] use [GNverifier] instead like this:
 
 ```bash
@@ -38,7 +38,7 @@ gndiff source.csv reference.csv
 ### Options and flags
 
 According to POSIX standard flags and options can be given either before or
-after name-string or file name.
+after file-paths arguments.
 
 #### help
 
