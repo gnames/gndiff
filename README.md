@@ -12,7 +12,7 @@ If you need to compare a list of names with a data-set that exists as a
 [GNverifier data-source] use [GNverifier] instead like this:
 
 ```bash
-gnvrifier names.txt -o -s 10
+gnvrifier names.txt -o -s 12
 ```
 
 where `-s` flag provides Id of required [GNverifier data-source]
