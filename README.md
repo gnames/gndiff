@@ -8,7 +8,7 @@ external database and can be used offline.
 
 ## Installation
 
-### Using Homebrew on Mac OS X, Linux, and Linux on Windows ([WSL2])
+### Using Homebrew on Mac OS X, Linux, and Linux on Windows ([WSL2][WSL install])
 
 Homebrew is a popular package manager for Open Source software originally
 developed for Mac OS X. Now it is also available on Linux, and can easily
