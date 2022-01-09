@@ -64,7 +64,7 @@ func (ing ingestio) Records(path string) ([]record.Record, error) {
 
 	name, id, family, valid := readHeader(header)
 	if !valid {
-		return nil, errors.New("the CSV file needs `scientifiName` field")
+		return nil, errors.New("the CSV file needs `scientificName` field")
 	}
 	var count int
 	var res []record.Record
