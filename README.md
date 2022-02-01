@@ -74,7 +74,7 @@ If you need to compare a list of names with a data-set that exists as a
 [GNverifier data-source] use [GNverifier]:
 
 ```bash
-gnvrifier names.txt -o -s 12
+gnverifier names.txt -o -s 12
 ```
 
 where `-s` option provides Id of required [GNverifier data-source], and `-o`
