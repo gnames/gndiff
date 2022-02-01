@@ -42,9 +42,9 @@ func MatchOutput(o Output, f gnfmt.Format) string {
 // CSVHeader returns the header string for CSV output format.
 func CSVHeader(f gnfmt.Format) string {
 	header := []string{
-		"Source", "SourceRow", "Id",
+		"Source", "SourceRow", "TaxonId",
 		"Name", "Reference", "MatchType",
-		"ReferenceRow", "Id", "Name", "EditDistance"}
+		"ReferenceRow", "TaxonId", "Name", "EditDistance"}
 	switch f {
 	case gnfmt.CSV:
 		return gnfmt.ToCSV(header, ',')
