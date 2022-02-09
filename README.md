@@ -89,6 +89,10 @@ Prepare two files with names. There are 3 possible file formats:
   field. Fields `TaxonID` and `Family` are also ingested if given, any
   capitalization of the fields names is accepted.
 
+The `Family` field indicates a family a particular species are assigned to
+according to the dataset. Normally this field is not needed, but in case of
+tricky homonyms it helps to resolve taxa from each other.
+
 The first of the two files should contain names that need to be matched.
 The second file should contain reference names.
 

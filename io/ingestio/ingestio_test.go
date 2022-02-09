@@ -24,7 +24,7 @@ func TestRecordsBad(t *testing.T) {
 	p = filepath.Join(path, "bad-header.csv")
 	rec, err = ing.Records(p)
 	assert.NotNil(t, err)
-	assert.Contains(t, err.Error(), "needs `scientifiName` field")
+	assert.Contains(t, err.Error(), "needs `scientificName` field")
 	assert.Nil(t, rec)
 }
 
