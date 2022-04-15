@@ -1,6 +1,9 @@
 # Changelog
 
+## Unreleased
+
 - Add [#10]: show csv/tsv header in the output.
+- Fix [#16]: empty Family and ID do not create false fields.
 
 ## [v0.1.1]
 
@@ -23,7 +26,6 @@ This document follows [changelog guidelines]
 
 [v0.1.1]: https://github.com/gnames/gndiff/compare/v0.1.0...v0.1.1
 [v0.1.0]: https://github.com/gnames/gndiff/tree/v0.1.0
-
 [#20]: https://github.com/gnames/gndiff/issues/20
 [#19]: https://github.com/gnames/gndiff/issues/19
 [#18]: https://github.com/gnames/gndiff/issues/18
@@ -44,5 +46,4 @@ This document follows [changelog guidelines]
 [#3]: https://github.com/gnames/gndiff/issues/3
 [#2]: https://github.com/gnames/gndiff/issues/2
 [#1]: https://github.com/gnames/gndiff/issues/1
-
 [changelog guidelines]: https://github.com/olivierlacan/keep-a-changelog

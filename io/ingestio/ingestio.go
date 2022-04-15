@@ -77,20 +77,28 @@ func (ing ingestio) Records(path string) ([]record.Record, error) {
 		if err != nil {
 			return nil, err
 		}
+
 		rec := record.Record{
 			DataSet: fileName,
 			Index:   count,
-			ID:      row[id],
-			Name:    row[name],
-			Family:  row[family],
+			ID:      getField(row, id),
+			Name:    getField(row, name),
+			Family:  getField(row, family),
 		}
 		res = append(res, rec)
 	}
 	return parse(res), nil
 }
 
+func getField(row []string, idx int) string {
+	if idx == -1 {
+		return ""
+	}
+	return row[idx]
+}
+
 func readHeader(s []string) (int, int, int, bool) {
-	var name, id, family int
+	name, id, family := -1, -1, -1
 	var valid bool
 	// remove BOM character if exists
 	if len(s) > 0 && len(s[0]) > 3 && s[0][0:3] == "\xef\xbb\xbf" {
