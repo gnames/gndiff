@@ -6,17 +6,18 @@ require (
 	github.com/devopsfaith/bloomfilter v1.4.0
 	github.com/dgraph-io/badger/v2 v2.2007.4
 	github.com/dvirsky/levenshtein v0.0.0-20200624034316-59b26b61c3c8
+	github.com/gnames/gnames v0.13.0
 	github.com/gnames/gnfmt v0.2.0
-	github.com/gnames/gnlib v0.6.6
-	github.com/gnames/gnparser v1.5.7
+	github.com/gnames/gnlib v0.13.0
+	github.com/gnames/gnparser v1.6.5
 	github.com/gnames/gnsys v0.2.2
 	github.com/gnames/levenshtein v0.2.1
 	github.com/sirupsen/logrus v1.7.0
-	github.com/spf13/cobra v1.3.0
-	github.com/spf13/viper v1.10.0
-	github.com/stretchr/testify v1.7.0
-	golang.org/x/perf v0.0.0-20211012211434-03971e389cd3
-	golang.org/x/tools v0.1.8
+	github.com/spf13/cobra v1.4.0
+	github.com/spf13/viper v1.10.1
+	github.com/stretchr/testify v1.7.1
+	golang.org/x/perf v0.0.0-20220317191433-96728ec1d780
+	golang.org/x/tools v0.1.10
 )
 
 require (
@@ -27,6 +28,7 @@ require (
 	github.com/dgryski/go-farm v0.0.0-20190423205320-6a90982ecee2 // indirect
 	github.com/dustin/go-humanize v1.0.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
+	github.com/gnames/gnstats v0.1.0 // indirect
 	github.com/gnames/gnuuid v0.1.1 // indirect
 	github.com/gnames/organizer v0.1.1 // indirect
 	github.com/gnames/tribool v0.1.1 // indirect
@@ -42,8 +44,9 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml v1.9.4 // indirect
-	github.com/pkg/errors v0.8.1 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/rs/zerolog v1.26.1 // indirect
 	github.com/spf13/afero v1.6.0 // indirect
 	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
@@ -56,9 +59,9 @@ require (
 	github.com/tmthrgd/go-hex v0.0.0-20180828131331-d1fb3dbb16a1 // indirect
 	github.com/tmthrgd/go-memset v0.0.0-20180828131805-6f4e59bf1e1d // indirect
 	github.com/tmthrgd/go-popcount v0.0.0-20180111143836-3918361d3e97 // indirect
-	golang.org/x/mod v0.5.1 // indirect
-	golang.org/x/net v0.0.0-20211020060615-d418f374d309 // indirect
-	golang.org/x/sys v0.0.0-20211205182925-97ca703d548d // indirect
+	golang.org/x/mod v0.6.0-dev.0.20220106191415-9b9b3d81d5e3 // indirect
+	golang.org/x/net v0.0.0-20220225172249-27dd8689420f // indirect
+	golang.org/x/sys v0.0.0-20211216021012-1d35b9e2eb4e // indirect
 	golang.org/x/text v0.3.7 // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect

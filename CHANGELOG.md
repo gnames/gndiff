@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [v0.2.0]
+
+- Add [#21]: more parsed information in JSON output.
+- Add [#20]: take ranks in account during matching.
+- Add [#17]: sort results according to their score.
 - Add [#10]: show csv/tsv header in the output.
 - Fix [#16]: empty Family and ID do not create false fields.
 
@@ -24,6 +29,7 @@
 
 This document follows [changelog guidelines]
 
+[v0.2.0]: https://github.com/gnames/gndiff/compare/v0.1.1...v0.2.0
 [v0.1.1]: https://github.com/gnames/gndiff/compare/v0.1.0...v0.1.1
 [v0.1.0]: https://github.com/gnames/gndiff/tree/v0.1.0
 [#20]: https://github.com/gnames/gndiff/issues/20

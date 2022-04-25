@@ -1,5 +1,8 @@
 .idea
 t
+*.json
+*.tsv
+*.csv
 prof
 .vscode
 200k-lines.txt

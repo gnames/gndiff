@@ -8,6 +8,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	"github.com/gnames/gndiff/config"
@@ -131,10 +132,27 @@ func parse(recs []record.Record) []record.Record {
 	for i := range recs {
 		recs[i].Parsed = parsed[i]
 		if recs[i].Parsed.Parsed {
-			res = append(res, recs[i])
+			res = append(res, addParsed(recs[i]))
 		}
 	}
 	return res
+}
+
+func addParsed(rec record.Record) record.Record {
+	p := rec.Parsed
+	rec.ParsingQuality = p.ParseQuality
+	rec.Cardinality = p.Cardinality
+	rec.CanonicalSimple = p.Canonical.Simple
+	rec.CanonicalFull = p.Canonical.Full
+	if p.Authorship != nil {
+		rec.Authors = p.Authorship.Authors
+		yrStr := strings.Trim(p.Authorship.Year, "()")
+		yr, err := strconv.Atoi(yrStr)
+		if err == nil {
+			rec.Year = yr
+		}
+	}
+	return rec
 }
 
 func tryNamesOnly(f *os.File, fileName string) ([]record.Record, rune, error) {

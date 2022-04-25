@@ -12,6 +12,33 @@ import (
 
 var path = "testdata/"
 
+// Issue #17
+func TestScore(t *testing.T) {
+	assert := assert.New(t)
+	cfg := config.New()
+	ing := ingestio.New(cfg)
+
+	src := filepath.Join(path, "issue-17-src.txt")
+	recSrc, err := ing.Records(src)
+	assert.Nil(err)
+
+	ref := filepath.Join(path, "issue-17-ref.txt")
+	recRef, err := ing.Records(ref)
+	assert.Nil(err)
+
+	gnd := gndiff.New(cfg)
+	res, err := gnd.Compare(recSrc, recRef)
+	assert.Nil(err)
+	assert.Equal(len(recSrc), len(res.Matches))
+	obione := res.Matches[0]
+	abelia := res.Matches[1]
+	bubo := res.Matches[2]
+
+	assert.Equal("Obione maritima var. maritimaa", obione.ReferenceRecords[0].CanonicalFull)
+	assert.Equal("Bubo bubo Linn. 1758", bubo.ReferenceRecords[0].Name)
+	assert.Equal("Abelia forrestii var. gracilenta (W.W.Sm.) Landrein", abelia.ReferenceRecords[0].Name)
+}
+
 func TestGNdiff(t *testing.T) {
 	cfg := config.New()
 	ing := ingestio.New(cfg)

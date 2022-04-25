@@ -36,6 +36,7 @@ func (gnd *gndiff) Compare(source, reference []record.Record) (output.Output, er
 		res[i].SourceRecord = source[i]
 		res[i].ReferenceRecords = recs
 	}
+	sortByScore(res)
 
 	return output.Output{Matches: res}, nil
 }

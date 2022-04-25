@@ -42,9 +42,9 @@ func MatchOutput(o Output, f gnfmt.Format) string {
 // CSVHeader returns the header string for CSV output format.
 func CSVHeader(f gnfmt.Format) string {
 	header := []string{
-		"Source", "SourceRow", "TaxonId",
-		"Name", "Reference", "MatchType",
-		"ReferenceRow", "TaxonId", "Name", "EditDistance"}
+		"Source", "SourceRow", "TaxonId", "Name", "CanonicalFull", "Reference",
+		"MatchType", "ReferenceRow", "TaxonId", "Name", "EditDistance", "Score",
+	}
 	switch f {
 	case gnfmt.CSV:
 		return gnfmt.ToCSV(header, ',')
@@ -76,12 +76,15 @@ func csvRow(m Match, sep rune) []string {
 			strconv.Itoa(s.Index),
 			s.ID,
 			s.Name,
+			s.CanonicalFull,
 			r[i].DataSet,
 			r[i].MatchType.String(),
 			strconv.Itoa(r[i].Index),
 			r[i].ID,
 			r[i].Name,
+			r[i].CanonicalFull,
 			strconv.Itoa(r[i].EditDistance),
+			strconv.FormatFloat(r[i].Score, 'f', 5, 64),
 		}
 		res = append(res, gnfmt.ToCSV(row, sep))
 	}
