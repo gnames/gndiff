@@ -12,7 +12,7 @@ import (
 
 var path = "testdata/"
 
-// Issue #17
+// Issue #17: sorting data according to the score.
 func TestScore(t *testing.T) {
 	assert := assert.New(t)
 	cfg := config.New()
@@ -35,6 +35,7 @@ func TestScore(t *testing.T) {
 	bubo := res.Matches[2]
 
 	assert.Equal("Obione maritima var. maritimaa", obione.ReferenceRecords[0].CanonicalFull)
+	assert.NotNil(obione.ReferenceRecords[0].ScoreDetails)
 	assert.Equal("Bubo bubo Linn. 1758", bubo.ReferenceRecords[0].Name)
 	assert.Equal("Abelia forrestii var. gracilenta (W.W.Sm.) Landrein", abelia.ReferenceRecords[0].Name)
 }

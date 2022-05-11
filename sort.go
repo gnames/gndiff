@@ -38,6 +38,7 @@ func toRecords(rd []*vlib.ResultData) []record.Record {
 			Family:          rd[i].ClassificationPath,
 			MatchType:       rd[i].MatchType,
 			Score:           rd[i].SortScore,
+			ScoreDetails:    &rd[i].ScoreDetails,
 		}
 		res[i] = rec
 	}

@@ -2,7 +2,11 @@
 
 ## Unreleased
 
-## [v0.2.0]
+## [v0.2.1] - 2022-05-11 Wed
+
+- Add [#23]: score details in results.
+
+## [v0.2.0] - 2022-04-25 Mon
 
 - Add [#21]: more parsed information in JSON output.
 - Add [#20]: take ranks in account during matching.
@@ -10,11 +14,11 @@
 - Add [#10]: show csv/tsv header in the output.
 - Fix [#16]: empty Family and ID do not create false fields.
 
-## [v0.1.1]
+## [v0.1.1] - 2021-12-27 Mon
 
 - Add [#9]: allow to take TSV files and simple names lists.
 
-## [v0.1.0]
+## [v0.1.0] - 2021-12-27 Mon
 
 - Add [#8]: make command line application.
 - Add [#7]: compare two checklists.
@@ -29,6 +33,7 @@
 
 This document follows [changelog guidelines]
 
+[v0.2.1]: https://github.com/gnames/gndiff/compare/v0.2.0...v0.2.1
 [v0.2.0]: https://github.com/gnames/gndiff/compare/v0.1.1...v0.2.0
 [v0.1.1]: https://github.com/gnames/gndiff/compare/v0.1.0...v0.1.1
 [v0.1.0]: https://github.com/gnames/gndiff/tree/v0.1.0
