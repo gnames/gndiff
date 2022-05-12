@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fix [#19]: duplication of results of fuzzy matching.
+
 ## [v0.2.1] - 2022-05-11 Wed
 
 - Add [#23]: score details in results.

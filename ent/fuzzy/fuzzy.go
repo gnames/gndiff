@@ -43,9 +43,18 @@ func (f *fuzzy) FindFuzzy(stem string) []string {
 
 func (f *fuzzy) find(stem string, maxDist int) []string {
 	stems := f.trie.FuzzyMatches(stem, maxDist)
-	res := make([]string, 0, len(stems)*2)
+	resMap := make(map[string]struct{})
 	for i := range stems {
-		res = append(res, f.canonicals[stems[i]]...)
+		cs := f.canonicals[stems[i]]
+		for i := range cs {
+			resMap[cs[i]] = struct{}{}
+		}
+	}
+	res := make([]string, len(resMap))
+	var i int
+	for k := range resMap {
+		res[i] = k
+		i++
 	}
 	return res
 }

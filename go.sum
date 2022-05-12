@@ -202,11 +202,12 @@ github.com/georgysavva/scany v0.3.0/go.mod h1:q8QyrfXjmBk9iJD00igd4lbkAKEXAH/zIY
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/gin-contrib/sse v0.0.0-20170109093832-22d885f9ecc7/go.mod h1:VJ0WA2NBN22VlZ2dKZQPAPnyWw5XTlK1KymzLKsr59s=
 github.com/gin-gonic/gin v1.1.5-0.20170702092826-d459835d2b07/go.mod h1:7cKuhb5qV2ggCFctp2fJQ+ErvciLZrIeoOSOm6mUr7Y=
-github.com/gnames/gnames v1.0.0-RC1 h1:lf/+5rBUczUYGDo9LBgwT9Xykkc0hdQqlvldlaKrHTo=
-github.com/gnames/gnames v1.0.0-RC1/go.mod h1:RT99vAA83z/qxuVp9rH13YWtZk4hOIZ1N9fo5vWioYI=
+github.com/gnames/gnames v1.0.0-RC2 h1:y6fc8ROHnOTN0zXPnkjvdCEhiBC0zvIFz67vEbUHCTk=
+github.com/gnames/gnames v1.0.0-RC2/go.mod h1:RT99vAA83z/qxuVp9rH13YWtZk4hOIZ1N9fo5vWioYI=
 github.com/gnames/gnfmt v0.1.0/go.mod h1:WG9c3CoiVrGc1SDsxLk7zjmv2B4UIzI00m4K5Khc/d0=
-github.com/gnames/gnfmt v0.2.0 h1:CjE1HxdqyTwufua5wMCdILWnCsCfRiHe5G4TgxR8aAI=
 github.com/gnames/gnfmt v0.2.0/go.mod h1:0Aog37s1ZNpmUwVQOf+lnx0SQq8r2EvfE/pLYGiJlJQ=
+github.com/gnames/gnfmt v0.3.0 h1:MvHFDXhzeDLt2B3R76Dwg89YCSNPD4PNDTWhF5Anqy4=
+github.com/gnames/gnfmt v0.3.0/go.mod h1:0Aog37s1ZNpmUwVQOf+lnx0SQq8r2EvfE/pLYGiJlJQ=
 github.com/gnames/gnlib v0.0.3/go.mod h1:k7Wsdx6zTzyhbxH2JcoCVFvgOQzA4iwehRxa8eEOfF8=
 github.com/gnames/gnlib v0.3.2/go.mod h1:IIo4lQ8hmW/pCmudLgwJ4KdoKWF6B4jFCdVcowG/evw=
 github.com/gnames/gnlib v0.6.6/go.mod h1:DgK8NcrG2YhOS1Nx0cxt8+Gdwu1cw/abSZdhkQKjIH8=

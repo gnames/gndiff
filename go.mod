@@ -6,8 +6,8 @@ require (
 	github.com/devopsfaith/bloomfilter v1.4.0
 	github.com/dgraph-io/badger/v2 v2.2007.4
 	github.com/dvirsky/levenshtein v0.0.0-20200624034316-59b26b61c3c8
-	github.com/gnames/gnames v1.0.0-RC1
-	github.com/gnames/gnfmt v0.2.0
+	github.com/gnames/gnames v1.0.0-RC2
+	github.com/gnames/gnfmt v0.3.0
 	github.com/gnames/gnlib v0.14.0
 	github.com/gnames/gnparser v1.6.5
 	github.com/gnames/gnsys v0.2.2

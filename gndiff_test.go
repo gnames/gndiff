@@ -40,6 +40,32 @@ func TestScore(t *testing.T) {
 	assert.Equal("Abelia forrestii var. gracilenta (W.W.Sm.) Landrein", abelia.ReferenceRecords[0].Name)
 }
 
+// Issue #19: duplicated results for similar names
+func TestNoDuplicates(t *testing.T) {
+	assert := assert.New(t)
+	cfg := config.New()
+	ing := ingestio.New(cfg)
+
+	src := filepath.Join(path, "issue-19-src.csv")
+	recSrc, err := ing.Records(src)
+	assert.Nil(err)
+
+	ref := filepath.Join(path, "issue-19-ref.csv")
+	recRef, err := ing.Records(ref)
+	assert.Nil(err)
+
+	gnd := gndiff.New(cfg)
+	res, err := gnd.Compare(recSrc, recRef)
+	assert.Nil(err)
+	assert.Equal(len(recSrc), len(res.Matches))
+
+	rrs := res.Matches[0].ReferenceRecords
+	assert.Equal(2, len(rrs))
+	assert.Equal("Obione maritima (Alfredo) Pacino var. maritima", rrs[0].Name)
+	assert.Equal("Obione maritima (Alfredo) Pacino subsp. maritima", rrs[1].Name)
+
+}
+
 func TestGNdiff(t *testing.T) {
 	cfg := config.New()
 	ing := ingestio.New(cfg)
