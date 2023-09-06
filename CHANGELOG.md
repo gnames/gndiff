@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add: update modules to most recent.
 - Fix [#19]: duplication of results of fuzzy matching.
 
 ## [v0.2.1] - 2022-05-11 Wed

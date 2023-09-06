@@ -3,8 +3,8 @@ package gndiff
 import (
 	"strconv"
 
-	"github.com/gnames/gnames/ent/score"
-	"github.com/gnames/gnames/ent/verifier"
+	"github.com/gnames/gnames/pkg/ent/score"
+	"github.com/gnames/gnames/pkg/ent/verifier"
 	"github.com/gnames/gndiff/ent/output"
 	"github.com/gnames/gndiff/ent/record"
 	vlib "github.com/gnames/gnlib/ent/verifier"
