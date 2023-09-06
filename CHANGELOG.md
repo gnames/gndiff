@@ -2,7 +2,11 @@
 
 ## Unreleased
 
+## [v0.2.2] - 2023-09-06 Wed
+
+- Add: refactor to more standard file structure.
 - Add: update modules to most recent.
+- Fix [#25]: CSV and TSV files have correct number of fields.
 - Fix [#19]: duplication of results of fuzzy matching.
 
 ## [v0.2.1] - 2022-05-11 Wed

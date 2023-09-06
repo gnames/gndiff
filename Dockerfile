@@ -6,6 +6,6 @@ ENV LAST_FULL_REBUILD 2021-12-27
 
 WORKDIR /bin
 
-COPY ./gndiff/gndiff /bin
+COPY ./gndiff /bin
 
 ENTRYPOINT [ "gndiff" ]

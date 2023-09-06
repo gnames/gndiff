@@ -8,9 +8,11 @@ prof
 200k-lines.txt
 test_data.new.txt
 .idea
+coverage.txt
 gnparser/gnparser
 bench*.txt
 binding/libgnparser.h
 binding/*.so
 build/**
 .DS_Store
+gndiff
