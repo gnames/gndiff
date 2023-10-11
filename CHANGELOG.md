@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fix [#26]: allow csv files with only one field in tsv and csv files.
+
 ## [v0.2.2] - 2023-09-06 Wed
 
 - Add: refactor to more standard file structure.

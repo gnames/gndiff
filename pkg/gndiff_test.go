@@ -12,6 +12,29 @@ import (
 
 var path = "testdata/"
 
+// Issue #26: csv with only one field is not processed
+func TestOneField(t *testing.T) {
+	assert := assert.New(t)
+	cfg := config.New()
+	ing := ingestio.New(cfg)
+
+	ref := filepath.Join(path, "ebird.csv")
+	recRef, err := ing.Records(ref)
+	assert.Nil(err)
+
+	for _, v := range []string{"issue-26-src.csv", "issue-26-src.tsv"} {
+		src := filepath.Join(path, v)
+		recSrc, err := ing.Records(src)
+		assert.Nil(err)
+		assert.Greater(len(recSrc), 30)
+
+		gnd := gndiff.New(cfg)
+		res, err := gnd.Compare(recSrc, recRef)
+		assert.Nil(err)
+		assert.Equal(len(recSrc), len(res.Matches))
+	}
+}
+
 // Issue #17: sorting data according to the score.
 func TestScore(t *testing.T) {
 	assert := assert.New(t)

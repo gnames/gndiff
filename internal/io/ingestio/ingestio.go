@@ -157,14 +157,14 @@ func addParsed(rec record.Record) record.Record {
 
 func tryNamesOnly(f *os.File, fileName string) ([]record.Record, rune, error) {
 	var res []record.Record
+	ext := strings.ToLower(filepath.Ext(f.Name()))
+
 	scanner := bufio.NewScanner(f)
-
 	var count int
-
 	for scanner.Scan() {
 		line := scanner.Text()
 		if count == 0 {
-			sep := fileSep(line)
+			sep := fileSep(line, ext)
 			if sep != rune(0) {
 				f.Seek(0, io.SeekStart)
 				return nil, sep, nil
@@ -181,8 +181,10 @@ func tryNamesOnly(f *os.File, fileName string) ([]record.Record, rune, error) {
 	return parse(res), rune(0), nil
 }
 
-func fileSep(s string) rune {
-	if strings.Contains(s, "\t") {
+func fileSep(s, ext string) rune {
+	if ext == ".csv" {
+		return ','
+	} else if strings.Contains(s, "\t") || ext == ".tsv" {
 		return '\t'
 	} else if !strings.Contains(s, ",") || strings.Contains(s, " ") {
 		return rune(0)
