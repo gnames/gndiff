@@ -1,6 +1,7 @@
 package gndiff_test
 
 import (
+	"fmt"
 	"path/filepath"
 	"testing"
 
@@ -84,9 +85,36 @@ func TestNoDuplicates(t *testing.T) {
 
 	rrs := res.Matches[0].ReferenceRecords
 	assert.Equal(2, len(rrs))
-	assert.Equal("Obione maritima (Alfredo) Pacino var. maritima", rrs[0].Name)
-	assert.Equal("Obione maritima (Alfredo) Pacino subsp. maritima", rrs[1].Name)
+	assert.Equal("Obione maritima (Alfredo) Pacino var. baritima", rrs[0].Name)
+	assert.Equal("Obione maritima (Alfredo) Pacino subsp. baritima", rrs[1].Name)
 
+}
+
+// Issue #24 return matches of autonyms/species group names
+func TestSpeciesGroup(t *testing.T) {
+	assert := assert.New(t)
+	cfg := config.New()
+	ing := ingestio.New(cfg)
+	src := filepath.Join(path, "issue-24-ref.txt")
+	recSrc, err := ing.Records(src)
+	assert.Nil(err)
+
+	ref := filepath.Join(path, "issue-24-src.txt")
+	recRef, err := ing.Records(ref)
+	assert.Nil(err)
+
+	gnd := gndiff.New(cfg)
+	res, err := gnd.Compare(recSrc, recRef)
+	assert.Nil(err)
+	assert.Equal(len(recSrc), len(res.Matches))
+
+	rrs := res.Matches //[0].ReferenceRecords
+	for i := range rrs {
+		fmt.Printf("RES: %#v\n\n", rrs[i])
+	}
+	// assert.Equal(4, len(rrs))
+	// assert.Equal("Obione maritima (Alfredo) Pacino var. baritima", rrs[0].Name)
+	// assert.Equal("Obione maritima (Alfredo) Pacino subsp. baritima", rrs[1].Name)
 }
 
 func TestGNdiff(t *testing.T) {

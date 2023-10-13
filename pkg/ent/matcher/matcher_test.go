@@ -34,7 +34,7 @@ func TestMatch(t *testing.T) {
 	assert.True(t, len(recs) > 0)
 	assert.Equal(t, verifier.Exact, recs[0].MatchType)
 
-	gnp := gnparser.New(gnparser.NewConfig())
+	gnp := gnparser.New(gnparser.NewConfig(gnparser.OptWithSpeciesGroupCut(true)))
 	rec.Name = "Rhea americanus nobilis vulgaris"
 	rec.Parsed = gnp.ParseName(rec.Name)
 	recs, err = m.Match(rec)

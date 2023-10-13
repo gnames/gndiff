@@ -41,7 +41,7 @@ func (gnd *gndiff) Compare(source, reference []record.Record) (output.Output, er
 	return output.Output{Matches: res}, nil
 }
 
-// Version function returns version number of `gnparser` and the timestamp
+// Version function returns version number of `gndiff` and the timestamp
 // of its build.
 func (gnd *gndiff) GetVersion() gnvers.Version {
 	version := Version
