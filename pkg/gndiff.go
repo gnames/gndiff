@@ -1,6 +1,8 @@
 package gndiff
 
 import (
+	"time"
+
 	"github.com/gnames/gndiff/pkg/config"
 	"github.com/gnames/gndiff/pkg/ent/matcher"
 	"github.com/gnames/gndiff/pkg/ent/output"
@@ -19,26 +21,38 @@ func New(cfg config.Config) GNdiff {
 	return &res
 }
 
-func (gnd *gndiff) Compare(source, reference []record.Record) (output.Output, error) {
+func (gnd *gndiff) Compare(query, reference []record.Record) (output.Output, error) {
+	startTime := time.Now()
 	var err error
 	var recs []record.Record
-	res := make([]output.Match, len(source))
+	res := make([]output.Match, len(query))
 	m := matcher.New()
 	err = m.Init(reference)
 	if err != nil {
 		return output.Output{}, err
 	}
-	for i := range source {
-		recs, err = m.Match(source[i])
+	initTime := time.Since(startTime)
+	for i := range query {
+		recs, err = m.Match(query[i])
 		if err != nil {
 			return output.Output{}, err
 		}
-		res[i].SourceRecord = source[i]
+		res[i].QueryRecord = query[i]
 		res[i].ReferenceRecords = recs
 	}
 	sortByScore(res)
+	totalTime := time.Since(startTime)
 
-	return output.Output{Matches: res}, nil
+	out := output.Output{
+		Metadata: output.Metadata{
+			TimeTotalSec:  totalTime.Seconds(),
+			TimeIngestSec: initTime.Seconds(),
+			TimeQuerySec:  (totalTime - initTime).Seconds(),
+		},
+		Matches: res,
+	}
+
+	return out, nil
 }
 
 // Version function returns version number of `gnparser` and the timestamp

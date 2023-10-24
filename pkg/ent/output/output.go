@@ -11,19 +11,26 @@ import (
 )
 
 type Output struct {
-	Matches []Match
+	Metadata `json:"metadata"`
+	Matches  []Match
 }
 
 type Match struct {
-	SourceRecord     record.Record   `json:"sourceRecord"`
+	QueryRecord      record.Record   `json:"queryRecord"`
 	ReferenceRecords []record.Record `json:"referenceRecords"`
+}
+
+type Metadata struct {
+	TimeTotalSec  float64 `json:"timeTotalSec"`
+	TimeIngestSec float64 `json:"timeIngestSec"`
+	TimeQuerySec  float64 `json:"timeQuerySec"`
 }
 
 // NameOutput takes result of verification for one string and converts it into
 // required format (CSV or JSON).
 func MatchOutput(o Output, f gnfmt.Format) string {
 	sort.Slice(o.Matches, func(i, j int) bool {
-		return o.Matches[i].SourceRecord.Index < o.Matches[j].SourceRecord.Index
+		return o.Matches[i].QueryRecord.Index < o.Matches[j].QueryRecord.Index
 	})
 
 	switch f {
@@ -42,7 +49,7 @@ func MatchOutput(o Output, f gnfmt.Format) string {
 // CSVHeader returns the header string for CSV output format.
 func CSVHeader(f gnfmt.Format) string {
 	header := []string{
-		"SourceFile", "SrcRowNum", "SrcTaxonId", "SrcName", "SrcCanonical",
+		"QueryFile", "QryRowNum", "QryTaxonId", "QryName", "QryCanonical",
 		"ReferenceFile", "RefRowNum", "RefTaxonId", "RefName", "RefCanonical",
 		"Score", "MatchType", "EditDistance",
 	}
@@ -69,7 +76,7 @@ func csvOutput(o Output, sep rune) string {
 
 func csvRow(m Match, sep rune) []string {
 	var res []string
-	s := m.SourceRecord
+	s := m.QueryRecord
 	r := m.ReferenceRecords
 	for i := range r {
 		row := []string{

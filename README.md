@@ -44,7 +44,7 @@ option.
 
 If both checklists of scientific names are local, use [GNdiff].
 
-## GNdiff Installation
+## `GNdiff` Installation
 
 ### Using Homebrew on Mac OS X, Linux, and Linux on Windows ([WSL2][WSL install])
 
@@ -131,7 +131,7 @@ tricky homonyms it helps to resolve taxa from each other.
 Run command:
 
 ```bash
-gndiff source.csv reference.csv
+gndiff query.csv reference.csv
 ```
 
 The first of the two files should contain names that need to be matched.
@@ -195,9 +195,20 @@ Sets the format of the comparison result and can take the following values:
 The default format is CSV.
 
 ```bash
-gndiff source.txt ref.txt -f pretty
+gndiff query.txt ref.txt -f pretty
 # or
-gndiff source.txt ref.txt --format=pretty
+gndiff query.txt ref.txt --format=pretty
+```
+
+#### port (integer)
+
+When `port` is set, `GNdiff` works as a web server with its RESTful API
+exposed at the given port.
+
+```bash
+gndiff -p 8080
+# or
+gndiff --port 8080
 ```
 
 #### quiet
@@ -205,16 +216,16 @@ gndiff source.txt ref.txt --format=pretty
 This flag supresses warnings log, showing only the matching results.
 
 ```bash
-gndiff source.txt ref.txt -q
+gndiff query.txt ref.txt -q
 # or
-gndiff source.txt ref.txt --quiet
+gndiff query.txt ref.txt --quiet
 ```
 
 Please note, that matching result uses `STDOUT`, while log uses `STDERR`,
 so a similar result can be achieved by redirecting `STDERR` to `/dev/null`
 
 ```bash
-gndiff source.txt ref.txt 2> /dev/null
+gndiff query.txt ref.txt 2> /dev/null
 ```
 
 ## Family names as a disambiguation tool

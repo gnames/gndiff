@@ -124,7 +124,7 @@ func TestNoFamily(t *testing.T) {
 	res, err := gnd.Compare(recSrc, recRef)
 	assert.Nil(err)
 	assert.Equal(len(recSrc), len(res.Matches))
-	srcRes := res.Matches[0].SourceRecord
+	srcRes := res.Matches[0].QueryRecord
 	refRes := res.Matches[0].ReferenceRecords[0]
 	assert.Equal(srcRes.ID, "")
 	assert.Equal(srcRes.Family, "")

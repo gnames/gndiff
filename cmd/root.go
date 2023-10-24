@@ -23,16 +23,17 @@ package cmd
 
 import (
 	"fmt"
+	"log/slog"
 	"os"
 	"path/filepath"
 
 	"github.com/gnames/gndiff/internal/io/ingestio"
+	"github.com/gnames/gndiff/internal/io/web"
 	gndiff "github.com/gnames/gndiff/pkg"
 	"github.com/gnames/gndiff/pkg/config"
 	"github.com/gnames/gndiff/pkg/ent/output"
 	"github.com/gnames/gndiff/pkg/ent/record"
 	"github.com/gnames/gnfmt"
-	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
 	"github.com/spf13/viper"
@@ -42,11 +43,11 @@ var quiet bool
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "gndiff source_file reference_file",
+	Use:   "gndiff query_file reference_file",
 	Short: "Compares two files with scientific names.",
 	Long: `
-Extracts scientific names, their IDs and families the source and reference
-files and prints out a match of a reference data to the source data.
+Extracts scientific names, their IDs and families from the query and reference
+files, prints out a match of a query data to the reference data.
 
 The files can be in comma-separated (CSV), tab-separated (TSV) formats, or
 just contain name-strings only (one per line).
@@ -57,7 +58,7 @@ fields are also ingested.
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {
-		var opts []config.Option
+		var opts, webOpts []config.Option
 		if versionFlag(cmd) {
 			os.Exit(0)
 		}
@@ -65,20 +66,34 @@ fields are also ingested.
 		quiet, _ = cmd.Flags().GetBool("quiet")
 
 		opts = append(opts, fmtFlag(cmd))
+
+		port, _ := cmd.Flags().GetInt("port")
+		if port > 0 {
+			logger := slog.New(slog.NewJSONHandler(os.Stderr, nil))
+			slog.SetDefault(logger)
+			cnf := config.New(webOpts...)
+			gnd := gndiff.New(cnf)
+			web.Run(gnd, port)
+			os.Exit(0)
+		}
+
 		cfg := config.New(opts...)
 		gnd := gndiff.New(cfg)
+
 		if len(args) != 2 {
-			log.Warn("Supply paths to two CSV/TSV files for comparison")
+			slog.Warn("Supply paths to two CSV/TSV files for comparison")
 			_ = cmd.Help()
 			os.Exit(1)
 		}
 		src, ref, err := readFiles(args[0], args[1])
 		if err != nil {
-			log.Fatal(err)
+			slog.Error(err.Error())
+			os.Exit(1)
 		}
 		res, err := gnd.Compare(src, ref)
 		if err != nil {
-			log.Fatal(err)
+			slog.Error(err.Error())
+			os.Exit(1)
 		}
 
 		switch cfg.Format {
@@ -106,6 +121,8 @@ func init() {
 		"default is 'csv'."
 	rootCmd.Flags().StringP("format", "f", "", formatHelp)
 
+	rootCmd.Flags().IntP("port", "p", 0, "Port to run web GUI.")
+
 	rootCmd.Flags().BoolP("quiet", "q", false, "Do not output info and warning logs.")
 }
 
@@ -122,7 +139,8 @@ func initConfig() {
 func versionFlag(cmd *cobra.Command) bool {
 	version, err := cmd.Flags().GetBool("version")
 	if err != nil {
-		log.Fatal(err)
+		slog.Error(err.Error())
+		os.Exit(1)
 	}
 	if version {
 		fmt.Printf("\nversion: %s\n\nbuild:   %s\n\n",
@@ -149,7 +167,10 @@ func fmtFlag(cmd *cobra.Command) config.Option {
 		return config.OptFormat(gnfmt.PrettyJSON)
 	default:
 		if !quiet {
-			log.Warnf("Cannot recognize format '%s', keeping default 'CSV' format.", f)
+			slog.Warn(
+				"Cannot recognize format-string, keeping default 'CSV' format.",
+				slog.String("format-string", f),
+			)
 		}
 		return config.OptFormat(gnfmt.CSV)
 	}

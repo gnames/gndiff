@@ -47,13 +47,13 @@ func toRecords(rd []*vlib.ResultData) []record.Record {
 
 func getMatchRes(m output.Match) *verifier.MatchRecord {
 	res := &verifier.MatchRecord{
-		ID:              m.SourceRecord.ID,
-		Name:            m.SourceRecord.Name,
-		Cardinality:     m.SourceRecord.Cardinality,
-		CanonicalFull:   m.SourceRecord.CanonicalFull,
-		CanonicalSimple: m.SourceRecord.Canonical.Simple,
-		Authors:         m.SourceRecord.Authors,
-		Year:            m.SourceRecord.Year,
+		ID:              m.QueryRecord.ID,
+		Name:            m.QueryRecord.Name,
+		Cardinality:     m.QueryRecord.Cardinality,
+		CanonicalFull:   m.QueryRecord.CanonicalFull,
+		CanonicalSimple: m.QueryRecord.Canonical.Simple,
+		Authors:         m.QueryRecord.Authors,
+		Year:            m.QueryRecord.Year,
 	}
 
 	var rds []*vlib.ResultData

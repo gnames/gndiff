@@ -42,7 +42,9 @@ func (ing ingestio) Records(path string) ([]record.Record, error) {
 	}
 	defer f.Close()
 
-	records, sep, err := tryNamesOnly(f, fileName)
+	ext := strings.ToLower(filepath.Ext(f.Name()))
+
+	records, sep, err := ing.RecordsFromText(f, fileName, ext)
 	if err != nil {
 		return nil, err
 	}
@@ -55,7 +57,39 @@ func (ing ingestio) Records(path string) ([]record.Record, error) {
 		return nil, errors.New("cannot determine field separator")
 	}
 
-	r := csv.NewReader(f)
+	// rewind file back
+	f.Seek(0, io.SeekStart)
+	return ing.RecordsFromCSV(f, sep, fileName)
+}
+
+func (ing ingestio) RecordsFromText(
+	r io.Reader,
+	fileName, ext string,
+) ([]record.Record, rune, error) {
+	var res []record.Record
+	scanner := bufio.NewScanner(r)
+	var count int
+	for scanner.Scan() {
+		line := scanner.Text()
+		if count == 0 {
+			sep := fileSep(line, ext)
+			if sep != rune(0) {
+				return nil, sep, nil
+			}
+		}
+
+		res = append(res, record.Record{DataSet: fileName, Index: count, Name: line})
+		count++
+	}
+
+	if err := scanner.Err(); err != nil {
+		return res, rune(0), err
+	}
+	return parse(res), rune(0), nil
+}
+
+func (ing ingestio) RecordsFromCSV(ior io.Reader, sep rune, fileName string) ([]record.Record, error) {
+	r := csv.NewReader(ior)
 	r.Comma = sep
 
 	header, err := r.Read()
@@ -153,32 +187,6 @@ func addParsed(rec record.Record) record.Record {
 		}
 	}
 	return rec
-}
-
-func tryNamesOnly(f *os.File, fileName string) ([]record.Record, rune, error) {
-	var res []record.Record
-	ext := strings.ToLower(filepath.Ext(f.Name()))
-
-	scanner := bufio.NewScanner(f)
-	var count int
-	for scanner.Scan() {
-		line := scanner.Text()
-		if count == 0 {
-			sep := fileSep(line, ext)
-			if sep != rune(0) {
-				f.Seek(0, io.SeekStart)
-				return nil, sep, nil
-			}
-		}
-
-		res = append(res, record.Record{DataSet: fileName, Index: count, Name: line})
-		count++
-	}
-
-	if err := scanner.Err(); err != nil {
-		return res, rune(0), err
-	}
-	return parse(res), rune(0), nil
 }
 
 func fileSep(s, ext string) rune {

@@ -1,0 +1,100 @@
+taxonID,scientificName,kingdom,phylum,class,order,family,nomenclaturalCode
+gn_1,,Animalia,Chordata,Aves,,,ICZN
+gn_2,Struthio camelus,Animalia,Chordata,Aves,Struthioniformes,Struthionidae (Ostriches),ICZN
+gn_3,Struthio camelus camelus,Animalia,Chordata,Aves,Struthioniformes,Struthionidae (Ostriches),ICZN
+gn_4,Struthio camelus syriacus,Animalia,Chordata,Aves,Struthioniformes,Struthionidae (Ostriches),ICZN
+gn_5,Struthio camelus massaicus,Animalia,Chordata,Aves,Struthioniformes,Struthionidae (Ostriches),ICZN
+gn_6,Struthio camelus australis,Animalia,Chordata,Aves,Struthioniformes,Struthionidae (Ostriches),ICZN
+gn_7,Struthio molybdophanes,Animalia,Chordata,Aves,Struthioniformes,Struthionidae (Ostriches),ICZN
+gn_8,Rhea americana,Animalia,Chordata,Aves,Rheiformes,Rheidae (Rheas),ICZN
+gn_9,Rhea americana araneipes,Animalia,Chordata,Aves,Rheiformes,Rheidae (Rheas),ICZN
+gn_10,Rhea americana americana,Animalia,Chordata,Aves,Rheiformes,Rheidae (Rheas),ICZN
+gn_11,Rhea americana nobilis,Animalia,Chordata,Aves,Rheiformes,Rheidae (Rheas),ICZN
+gn_12,Rhea americana albescens,Animalia,Chordata,Aves,Rheiformes,Rheidae (Rheas),ICZN
+gn_13,Rhea americana intermedia,Animalia,Chordata,Aves,Rheiformes,Rheidae (Rheas),ICZN
+gn_14,Rhea pennata,Animalia,Chordata,Aves,Rheiformes,Rheidae (Rheas),ICZN
+gn_15,Rhea pennata tarapacensis/garleppi,Animalia,Chordata,Aves,Rheiformes,Rheidae (Rheas),ICZN
+gn_16,Rhea pennata garleppi,Animalia,Chordata,Aves,Rheiformes,Rheidae (Rheas),ICZN
+gn_17,Rhea pennata tarapacensis,Animalia,Chordata,Aves,Rheiformes,Rheidae (Rheas),ICZN
+gn_18,Rhea pennata pennata,Animalia,Chordata,Aves,Rheiformes,Rheidae (Rheas),ICZN
+gn_19,Nothocercus julius,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_20,Nothocercus bonapartei,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_21,Nothocercus bonapartei [bonapartei Group],Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_22,Nothocercus bonapartei intercedens,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_23,Nothocercus bonapartei discrepans,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_24,Nothocercus bonapartei bonapartei,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_25,Nothocercus bonapartei plumbeiceps,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_26,Nothocercus bonapartei frantzii,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_27,Nothocercus nigrocapillus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_28,Nothocercus nigrocapillus cadwaladeri,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_29,Nothocercus nigrocapillus nigrocapillus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_30,Tinamus tao,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_31,Tinamus tao larensis,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_32,Tinamus tao kleei,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_33,Tinamus tao septentrionalis,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_34,Tinamus tao tao,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_35,Tinamus solitarius,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_36,Tinamus osgoodi,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_37,Tinamus osgoodi hershkovitzi,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_38,Tinamus osgoodi osgoodi,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_39,Tinamus major,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_40,Tinamus major robustus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_41,Tinamus major percautus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_42,Tinamus major fuscipennis,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_43,Tinamus major castaneiceps,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_44,Tinamus major brunneiventris,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_45,Tinamus major saturatus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_46,Tinamus major latifrons,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_47,Tinamus major zuliensis,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_48,Tinamus major peruvianus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_49,Tinamus major serratus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_50,Tinamus major major,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_51,Tinamus major olivascens,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_52,Tinamus guttatus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_53,Crypturellus cinereus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_54,Crypturellus berlepschi,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_55,Crypturellus soui,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_56,Crypturellus soui meserythrus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_57,Crypturellus soui modestus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_58,Crypturellus soui capnodes,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_59,Crypturellus soui poliocephalus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_60,Crypturellus soui panamensis,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_61,Crypturellus soui harterti,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_62,Crypturellus soui caucae,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_63,Crypturellus soui mustelinus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_64,Crypturellus soui soui,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_65,Crypturellus soui caquetae,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_66,Crypturellus soui andrei,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_67,Crypturellus soui nigriceps,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_68,Crypturellus soui inconspicuus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_69,Crypturellus soui albigularis,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_70,Crypturellus ptaritepui,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_71,Crypturellus obsoletus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_72,Crypturellus obsoletus castaneus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_73,Crypturellus obsoletus [obsoletus Group],Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_74,Crypturellus obsoletus ochraceiventris,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_75,Crypturellus obsoletus traylori,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_76,Crypturellus obsoletus punensis,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_77,Crypturellus obsoletus cerviniventris,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_78,Crypturellus obsoletus knoxi,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_79,Crypturellus obsoletus griseiventris,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_80,Crypturellus obsoletus hypochraceus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_81,Crypturellus obsoletus obsoletus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_82,Crypturellus undulatus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_83,Crypturellus undulatus manapiare,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_84,Crypturellus undulatus simplex,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_85,Crypturellus undulatus yapura,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_86,Crypturellus undulatus vermiculatus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_87,Crypturellus undulatus adspersus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_88,Crypturellus undulatus undulatus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_89,Crypturellus transfasciatus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_90,Crypturellus strigulosus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_91,Crypturellus duidae,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_92,Crypturellus erythropus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_93,Crypturellus erythropus columbianus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_94,Crypturellus erythropus saltuarius,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_95,Crypturellus erythropus idoneus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_96,Crypturellus erythropus cursitans,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_97,Crypturellus erythropus spencei,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_98,Crypturellus erythropus margaritae,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN
+gn_99,Crypturellus erythropus erythropus,Animalia,Chordata,Aves,Tinamiformes,Tinamidae (Tinamous),ICZN

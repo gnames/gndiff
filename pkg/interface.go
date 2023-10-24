@@ -14,6 +14,14 @@ type GNdiff interface {
 	GetVersion() gnvers.Version
 }
 
+// Differ contains method to match query and reference. `Query`
+// contains scientific name-string to match, while `reference`
+// contains scientific name-string to match against.
 type Differ interface {
-	Compare([]record.Record, []record.Record) (output.Output, error)
+	// Compare takes a query
+	// should be in a csv, tsv, or plain text format.
+	Compare(
+		query []record.Record,
+		reference []record.Record,
+	) (output.Output, error)
 }

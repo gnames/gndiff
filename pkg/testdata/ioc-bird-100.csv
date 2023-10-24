@@ -1,0 +1,100 @@
+taxonID,scientificName,kingdom,phylum,class,order,family,genus,nomenclaturalCode
+gn_1,"Struthio camelus Linnaeus, 1758",Animalia,Chordata,Aves,Struthioniformes,Struthionidae,Struthio,ICZN
+gn_2,"Struthio molybdophanes Reichenow, 1883",Animalia,Chordata,Aves,Struthioniformes,Struthionidae,Struthio,ICZN
+gn_3,"Rhea americana (Linnaeus, 1758)",Animalia,Chordata,Aves,Rheiformes,Rheidae,Rhea,ICZN
+gn_4,"Rhea pennata d'Orbigny, 1837",Animalia,Chordata,Aves,Rheiformes,Rheidae,Rhea,ICZN
+gn_5,"Apteryx australis Shaw, 1813",Animalia,Chordata,Aves,Apterygiformes,Apterygidae,Apteryx,ICZN
+gn_6,"Apteryx mantelli A. D. Bartlett, 1852",Animalia,Chordata,Aves,Apterygiformes,Apterygidae,Apteryx,ICZN
+gn_7,"Apteryx rowi Tennyson, Palma, H. A. Robertson, Worthy & B. J. Gill, 2003",Animalia,Chordata,Aves,Apterygiformes,Apterygidae,Apteryx,ICZN
+gn_8,"Apteryx owenii Gould, 1847",Animalia,Chordata,Aves,Apterygiformes,Apterygidae,Apteryx,ICZN
+gn_9,"Apteryx haastii Potts, 1872",Animalia,Chordata,Aves,Apterygiformes,Apterygidae,Apteryx,ICZN
+gn_10,"Casuarius casuarius (Linnaeus, 1758)",Animalia,Chordata,Aves,Casuariiformes,Casuariidae,Casuarius,ICZN
+gn_11,"Casuarius bennetti Gould, 1857",Animalia,Chordata,Aves,Casuariiformes,Casuariidae,Casuarius,ICZN
+gn_12,"Casuarius unappendiculatus Blyth, 1860",Animalia,Chordata,Aves,Casuariiformes,Casuariidae,Casuarius,ICZN
+gn_13,"Dromaius novaehollandiae (Latham, 1790)",Animalia,Chordata,Aves,Casuariiformes,Casuariidae,Dromaius,ICZN
+gn_14,"Tinamus tao Temminck, 1815",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Tinamus,ICZN
+gn_15,"Tinamus solitarius (Vieillot, 1819)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Tinamus,ICZN
+gn_16,"Tinamus osgoodi Conover, 1949",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Tinamus,ICZN
+gn_17,"Tinamus major (J. F. Gmelin, 1789)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Tinamus,ICZN
+gn_18,"Tinamus guttatus Pelzeln, 1863",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Tinamus,ICZN
+gn_19,"Nothocercus bonapartei (G. R. Gray, 1867)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Nothocercus,ICZN
+gn_20,"Nothocercus julius (Bonaparte, 1854)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Nothocercus,ICZN
+gn_21,"Nothocercus nigrocapillus (G. R. Gray, 1867)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Nothocercus,ICZN
+gn_22,"Crypturellus berlepschi (Rothschild, 1897)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_23,"Crypturellus cinereus (J. F. Gmelin, 1789)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_24,"Crypturellus soui (Hermann, 1783)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_25,"Crypturellus ptaritepui J. T. Zimmer & Phelps, 1945",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_26,"Crypturellus obsoletus (Temminck, 1815)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_27,"Crypturellus undulatus (Temminck, 1815)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_28,"Crypturellus transfasciatus (P. L. Sclater & Salvin, 1878)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_29,"Crypturellus strigulosus (Temminck, 1815)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_30,"Crypturellus duidae J. T. Zimmer, 1938",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_31,"Crypturellus erythropus (Pelzeln, 1863)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_32,"Crypturellus noctivagus (Wied-Neuwied, 1820)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_33,"Crypturellus atrocapillus (Tschudi, 1844)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_34,"Crypturellus cinnamomeus (P. A. Lesson, 1842)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_35,"Crypturellus boucardi (P. L. Sclater, 1860)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_36,"Crypturellus kerriae (Chapman, 1915)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_37,"Crypturellus variegatus (J. F. Gmelin, 1789)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_38,"Crypturellus brevirostris (Pelzeln, 1863)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_39,"Crypturellus bartletti (P. L. Sclater & Salvin, 1873)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_40,"Crypturellus parvirostris (Wagler, 1827)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_41,"Crypturellus casiquiare (Chapman, 1929)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_42,"Crypturellus tataupa (Temminck, 1815)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Crypturellus,ICZN
+gn_43,"Rhynchotus rufescens (Temminck, 1815)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Rhynchotus,ICZN
+gn_44,"Rhynchotus maculicollis G. R. Gray, 1867",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Rhynchotus,ICZN
+gn_45,"Nothoprocta taczanowskii P. L. Sclater & Salvin, 1875",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Nothoprocta,ICZN
+gn_46,"Nothoprocta ornata (G. R. Gray, 1867)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Nothoprocta,ICZN
+gn_47,"Nothoprocta perdicaria (Kittlitz, 1830)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Nothoprocta,ICZN
+gn_48,"Nothoprocta cinerascens (Burmeister, 1860)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Nothoprocta,ICZN
+gn_49,"Nothoprocta pentlandii (G. R. Gray, 1867)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Nothoprocta,ICZN
+gn_50,"Nothoprocta curvirostris P. L. Sclater & Salvin, 1873",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Nothoprocta,ICZN
+gn_51,"Nothura boraquira (Spix, 1825)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Nothura,ICZN
+gn_52,"Nothura minor (Spix, 1825)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Nothura,ICZN
+gn_53,"Nothura darwinii G. R. Gray, 1867",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Nothura,ICZN
+gn_54,"Nothura maculosa (Temminck, 1815)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Nothura,ICZN
+gn_55,"Taoniscus nanus (Temminck, 1815)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Taoniscus,ICZN
+gn_56,"Eudromia elegans I. Geoffroy Saint-Hilaire, 1832",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Eudromia,ICZN
+gn_57,"Eudromia formosa (Lillo, 1905)",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Eudromia,ICZN
+gn_58,"Tinamotis pentlandii Vigors, 1837",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Tinamotis,ICZN
+gn_59,"Tinamotis ingoufi Oustalet, 1890",Animalia,Chordata,Aves,Tinamiformes,Tinamidae,Tinamotis,ICZN
+gn_60,"Anhima cornuta (Linnaeus, 1766)",Animalia,Chordata,Aves,Anseriformes,Anhimidae,Anhima,ICZN
+gn_61,"Chauna chavaria (Linnaeus, 1766)",Animalia,Chordata,Aves,Anseriformes,Anhimidae,Chauna,ICZN
+gn_62,"Chauna torquata (Oken, 1816)",Animalia,Chordata,Aves,Anseriformes,Anhimidae,Chauna,ICZN
+gn_63,"Anseranas semipalmata (Latham, 1798)",Animalia,Chordata,Aves,Anseriformes,Anseranatidae,Anseranas,ICZN
+gn_64,"Dendrocygna viduata (Linnaeus, 1766)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Dendrocygna,ICZN
+gn_65,"Dendrocygna autumnalis (Linnaeus, 1758)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Dendrocygna,ICZN
+gn_66,"Dendrocygna guttata Schlegel, 1866",Animalia,Chordata,Aves,Anseriformes,Anatidae,Dendrocygna,ICZN
+gn_67,"Dendrocygna arborea (Linnaeus, 1758)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Dendrocygna,ICZN
+gn_68,"Dendrocygna bicolor (Vieillot, 1816)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Dendrocygna,ICZN
+gn_69,"Dendrocygna eytoni (Eyton, 1838)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Dendrocygna,ICZN
+gn_70,"Dendrocygna arcuata (Horsfield, 1824)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Dendrocygna,ICZN
+gn_71,"Dendrocygna javanica (Horsfield, 1821)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Dendrocygna,ICZN
+gn_72,"Thalassornis leuconotus Eyton, 1838",Animalia,Chordata,Aves,Anseriformes,Anatidae,Thalassornis,ICZN
+gn_73,"Cereopsis novaehollandiae Latham, 1801",Animalia,Chordata,Aves,Anseriformes,Anatidae,Cereopsis,ICZN
+gn_74,"Branta bernicla (Linnaeus, 1758)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Branta,ICZN
+gn_75,"Branta ruficollis (Pallas, 1769)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Branta,ICZN
+gn_76,"Branta sandvicensis (Vigors, 1834)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Branta,ICZN
+gn_77,"Branta canadensis (Linnaeus, 1758)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Branta,ICZN
+gn_78,"Branta leucopsis (Bechstein, 1803)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Branta,ICZN
+gn_79,"Branta hutchinsii (Richardson, 1832)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Branta,ICZN
+gn_80,"Anser indicus (Latham, 1790)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Anser,ICZN
+gn_81,"Anser canagicus (Sevastianov, 1802)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Anser,ICZN
+gn_82,"Anser rossii Cassin, 1861",Animalia,Chordata,Aves,Anseriformes,Anatidae,Anser,ICZN
+gn_83,"Anser caerulescens (Linnaeus, 1758)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Anser,ICZN
+gn_84,"Anser anser (Linnaeus, 1758)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Anser,ICZN
+gn_85,"Anser cygnoides (Linnaeus, 1758)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Anser,ICZN
+gn_86,"Anser fabalis (Latham, 1787)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Anser,ICZN
+gn_87,"Anser brachyrhynchus Baillon, 1834",Animalia,Chordata,Aves,Anseriformes,Anatidae,Anser,ICZN
+gn_88,"Anser serrirostris Gould, 1852",Animalia,Chordata,Aves,Anseriformes,Anatidae,Anser,ICZN
+gn_89,"Anser albifrons (Scopoli, 1769)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Anser,ICZN
+gn_90,"Anser erythropus (Linnaeus, 1758)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Anser,ICZN
+gn_91,"Coscoroba coscoroba (Molina, 1782)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Coscoroba,ICZN
+gn_92,"Cygnus atratus (Latham, 1790)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Cygnus,ICZN
+gn_93,"Cygnus melancoryphus (Molina, 1782)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Cygnus,ICZN
+gn_94,"Cygnus olor (J. F. Gmelin, 1789)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Cygnus,ICZN
+gn_95,"Cygnus buccinator Richardson, 1831",Animalia,Chordata,Aves,Anseriformes,Anatidae,Cygnus,ICZN
+gn_96,"Cygnus columbianus (Ord, 1815)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Cygnus,ICZN
+gn_97,"Cygnus cygnus (Linnaeus, 1758)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Cygnus,ICZN
+gn_98,"Stictonetta naevosa (Gould, 1841)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Stictonetta,ICZN
+gn_99,"Hymenolaimus malacorhynchos (J. F. Gmelin, 1789)",Animalia,Chordata,Aves,Anseriformes,Anatidae,Hymenolaimus,ICZN
