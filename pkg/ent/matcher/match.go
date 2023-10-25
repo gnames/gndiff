@@ -5,6 +5,7 @@ import (
 
 	"github.com/gnames/gndiff/pkg/ent/record"
 	"github.com/gnames/gnlib/ent/verifier"
+	"github.com/gnames/gnparser/ent/stemmer"
 )
 
 func (m *matcher) Match(rec record.Record) ([]record.Record, error) {
@@ -33,8 +34,12 @@ type canPair struct {
 func (m *matcher) partialMatch(can, stem string) ([]record.Record, error) {
 	var res []record.Record
 	var err error
-	cans := partialCombos(can, stem)
+	cans, spGr := partialCombos(can, stem)
 	for i := range cans {
+		if spGr {
+
+		}
+
 		res, err = m.MatchExact(cans[i].can)
 		if len(res) > 0 || err != nil {
 			for i := range res {
@@ -59,9 +64,11 @@ func (m *matcher) partialMatch(can, stem string) ([]record.Record, error) {
 	return res, err
 }
 
-func partialCombos(can, stem string) []canPair {
+func partialCombos(can, stem string) ([]canPair, bool) {
 	canWs := strings.Split(can, " ")
-	stemWs := strings.Split(stem, " ")
+	stemCan := stemmer.StemCanonical(can)
+	spGr := stemCan != stem
+	stemWs := strings.Split(stemCan, " ")
 	switch len(canWs) {
 	case 2:
 		return []canPair{
@@ -70,7 +77,7 @@ func partialCombos(can, stem string) []canPair {
 				stem:        stemWs[0],
 				cardinality: 1,
 			},
-		}
+		}, spGr
 	case 3:
 		return []canPair{
 			{
@@ -88,7 +95,7 @@ func partialCombos(can, stem string) []canPair {
 				stem:        canWs[0],
 				cardinality: 1,
 			},
-		}
+		}, spGr
 	case 4:
 		return []canPair{
 			{
@@ -116,8 +123,8 @@ func partialCombos(can, stem string) []canPair {
 				stem:        canWs[0],
 				cardinality: 1,
 			},
-		}
+		}, spGr
 	default:
-		return nil
+		return nil, spGr
 	}
 }

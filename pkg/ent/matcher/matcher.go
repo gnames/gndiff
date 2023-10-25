@@ -32,14 +32,18 @@ func (m *matcher) Init(recs []record.Record) error {
 	return err
 }
 
-func (m *matcher) MatchExact(canonical string) ([]record.Record, error) {
+func (m *matcher) MatchExact(canonical string, spGr bool) ([]record.Record, error) {
 	var err error
 	var res []record.Record
 	if m.e.Find(canonical) {
 		res, err = m.db.Select(canonical)
 	}
 	for i := range res {
-		res[i].MatchType = verifier.Exact
+		if spGr {
+			res[i].MatchType = verifier.ExactSpeciesGroup
+		} else {
+			res[i].MatchType = verifier.Exact
+		}
 	}
 	return res, err
 }

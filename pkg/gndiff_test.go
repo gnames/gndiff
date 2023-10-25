@@ -95,11 +95,11 @@ func TestSpeciesGroup(t *testing.T) {
 	assert := assert.New(t)
 	cfg := config.New()
 	ing := ingestio.New(cfg)
-	src := filepath.Join(path, "issue-24-ref.txt")
+	src := filepath.Join(path, "issue-24-src.txt")
 	recSrc, err := ing.Records(src)
 	assert.Nil(err)
 
-	ref := filepath.Join(path, "issue-24-src.txt")
+	ref := filepath.Join(path, "issue-24-ref.txt")
 	recRef, err := ing.Records(ref)
 	assert.Nil(err)
 
@@ -110,7 +110,7 @@ func TestSpeciesGroup(t *testing.T) {
 
 	rrs := res.Matches //[0].ReferenceRecords
 	for i := range rrs {
-		fmt.Printf("RES: %#v\n\n", rrs[i])
+		fmt.Printf("RES: %#v\n\n", rrs[i].SourceRecord.Name)
 	}
 	// assert.Equal(4, len(rrs))
 	// assert.Equal("Obione maritima (Alfredo) Pacino var. baritima", rrs[0].Name)
