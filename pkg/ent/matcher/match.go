@@ -1,14 +1,16 @@
 package matcher
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/gnames/gndiff/pkg/ent/record"
 	"github.com/gnames/gnlib/ent/verifier"
+	"github.com/gnames/gnparser/ent/stemmer"
 )
 
 func (m *matcher) Match(rec record.Record) ([]record.Record, error) {
-	res, err := m.MatchExact(rec.Canonical.Simple)
+	res, err := m.MatchExact(rec.Canonical.Simple, rec.Canonical.Stemmed)
 	if len(res) > 0 || err != nil {
 		return res, err
 	}
@@ -18,7 +20,7 @@ func (m *matcher) Match(rec record.Record) ([]record.Record, error) {
 		return res, err
 	}
 
-	if rec.Cardinality > 1 {
+	if rec.Cardinality > 1 || m.cfg.WithUninomialFuzzyMatch {
 		res, err = m.partialMatch(rec.Canonical.Simple, rec.Canonical.Stemmed)
 	}
 
@@ -35,15 +37,23 @@ func (m *matcher) partialMatch(can, stem string) ([]record.Record, error) {
 	var err error
 	cans := partialCombos(can, stem)
 	for i := range cans {
-		res, err = m.MatchExact(cans[i].can)
-		if len(res) > 0 || err != nil {
-			for i := range res {
-				res[i].MatchType = verifier.PartialExact
+		res, err = m.MatchExact(cans[i].can, cans[i].stem)
+		if err != nil {
+			return nil, err
+		}
+		if len(res) > 0 {
+			matchType := verifier.Exact
+			for ii := range res {
+				fmt.Printf("%s - %s\n", cans[i].can, res[ii].CanonicalSimple)
+				if cans[i].can != res[ii].CanonicalSimple {
+					matchType = verifier.PartialFuzzy
+				}
+				res[ii].MatchType = matchType
 			}
 			return res, err
 		}
 
-		if cans[i].cardinality == 1 {
+		if cans[i].cardinality == 1 && !m.cfg.WithUninomialFuzzyMatch {
 			break
 		}
 
@@ -57,6 +67,18 @@ func (m *matcher) partialMatch(can, stem string) ([]record.Record, error) {
 	}
 
 	return res, err
+}
+
+func spGroupMatchType(can, stem string, mt verifier.MatchTypeValue) verifier.MatchTypeValue {
+	if stemmer.StemCanonical(can) != stem {
+		switch mt {
+		case verifier.Exact:
+			mt = verifier.ExactSpeciesGroup
+		case verifier.Fuzzy:
+			mt = verifier.FuzzySpeciesGroup
+		}
+	}
+	return mt
 }
 
 func partialCombos(can, stem string) []canPair {

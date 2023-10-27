@@ -23,7 +23,7 @@ func TestCreate(t *testing.T) {
 
 	err = db.Init(recs)
 	assert.Nil(t, err)
-	recs, err = db.Select("Rhea americana nobilis")
+	recs, err = db.Select("Rhea american nobil")
 	assert.Nil(t, err)
 	assert.True(t, len(recs) > 0)
 	assert.Equal(t, "85c94df5-33a0-5550-89d2-216a7e75e564", recs[0].VerbatimID)

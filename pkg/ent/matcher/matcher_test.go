@@ -16,25 +16,28 @@ import (
 var (
 	bootstrapped bool
 	m            matcher.Matcher
+	gnp          gnparser.GNparser
 )
 
 func TestMatch(t *testing.T) {
 	var err error
 	var recs []record.Record
+	var rec record.Record
 	if !bootstrapped {
 		initMatcher(t)
 	}
 	can := "Rhea americana nobilis"
-	recs, err = m.MatchExact(can)
+	stem := "Rhea american nobil"
+
+	recs, err = m.MatchExact(can, stem)
 	assert.Nil(t, err)
-	rec := recs[0]
+	rec = recs[0]
 
 	recs, err = m.Match(rec)
 	assert.Nil(t, err)
 	assert.True(t, len(recs) > 0)
 	assert.Equal(t, verifier.Exact, recs[0].MatchType)
 
-	gnp := gnparser.New(gnparser.NewConfig())
 	rec.Name = "Rhea americanus nobilis vulgaris"
 	rec.Parsed = gnp.ParseName(rec.Name)
 	recs, err = m.Match(rec)
@@ -43,7 +46,22 @@ func TestMatch(t *testing.T) {
 	assert.Equal(t, verifier.PartialFuzzy, recs[0].MatchType)
 }
 
+// func TestSpGroup(t *testing.T) {
+// 	assert := assert.New(t)
+// 	if !bootstrapped {
+// 		initMatcher(t)
+// 	}
+// 	var rec record.Record
+// 	rec.Name = "Apteryx mantelli A. D. Bartlett, 1852 mantelli"
+// 	rec.Parsed = gnp.ParseName(rec.Name)
+// 	recs, err := m.Match(rec)
+// 	assert.Nil(err)
+// 	assert.Equal(verifier.ExactSpeciesGroup, recs[0].MatchType)
+
+// }
+
 func TestMatchExactFuzzy(t *testing.T) {
+	assert := assert.New(t)
 	if !bootstrapped {
 		initMatcher(t)
 	}
@@ -57,31 +75,32 @@ func TestMatchExactFuzzy(t *testing.T) {
 	stemFuz := "Rhea amerian nobil"
 	badStr := "Something irrelevant"
 
-	recs, err = m.MatchExact(can)
-	assert.Nil(t, err)
-	assert.True(t, len(recs) > 0)
-	assert.Equal(t, can, recs[0].Canonical.Simple)
-	assert.Equal(t, 0, recs[0].EditDistance)
+	recs, err = m.MatchExact(can, stemEx)
+	assert.Nil(err)
+	assert.True(len(recs) > 0)
+	assert.Equal(can, recs[0].Canonical.Simple)
+	assert.Equal(0, recs[0].EditDistance)
 
-	recs, err = m.MatchFuzzy(canSuffix, stemEx)
-	assert.Nil(t, err)
-	assert.True(t, len(recs) > 0)
-	assert.Equal(t, can, recs[0].Canonical.Simple)
-	assert.Equal(t, 2, recs[0].EditDistance)
+	recs, err = m.MatchExact(canSuffix, stemEx)
+	assert.Nil(err)
+	assert.True(len(recs) > 0)
+	assert.Equal(can, recs[0].Canonical.Simple)
+	assert.Equal(verifier.Fuzzy, recs[0].MatchType)
+	assert.Equal(2, recs[0].EditDistance)
 
 	recs, err = m.MatchFuzzy(canFuz, stemFuz)
-	assert.Nil(t, err)
-	assert.True(t, len(recs) > 0)
-	assert.Equal(t, can, recs[0].Canonical.Simple)
-	assert.Equal(t, 1, recs[0].EditDistance)
+	assert.Nil(err)
+	assert.True(len(recs) > 0)
+	assert.Equal(can, recs[0].Canonical.Simple)
+	assert.Equal(1, recs[0].EditDistance)
 
 	recs, err = m.MatchFuzzy(canSuffix, stemFuz)
-	assert.Nil(t, err)
-	assert.True(t, len(recs) == 0)
+	assert.Nil(err)
+	assert.True(len(recs) == 0)
 
 	recs, err = m.MatchFuzzy(canSuffix, badStr)
-	assert.Nil(t, err)
-	assert.True(t, len(recs) == 0)
+	assert.Nil(err)
+	assert.True(len(recs) == 0)
 }
 
 func initMatcher(t *testing.T) {
@@ -93,8 +112,11 @@ func initMatcher(t *testing.T) {
 	recs, err = ing.Records(p)
 	assert.Nil(t, err)
 	assert.True(t, len(recs) > 0)
+	gnp = gnparser.New(
+		gnparser.NewConfig(gnparser.OptWithSpeciesGroupCut(true)),
+	)
 
-	m = matcher.New()
+	m = matcher.New(cfg)
 	err = m.Init(recs)
 	assert.Nil(t, err)
 }

@@ -33,7 +33,7 @@ func prepareData(recs []record.Record) map[string][]record.Record {
 	res := make(map[string][]record.Record)
 
 	for i := range recs {
-		stem := recs[i].Canonical.Simple
+		stem := recs[i].Canonical.Stemmed
 		res[stem] = append(res[stem], recs[i])
 	}
 	return res

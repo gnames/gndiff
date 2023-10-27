@@ -1,7 +1,8 @@
 package output
 
 import (
-	"sort"
+	"cmp"
+	"slices"
 	"strconv"
 	"strings"
 
@@ -29,8 +30,8 @@ type Metadata struct {
 // NameOutput takes result of verification for one string and converts it into
 // required format (CSV or JSON).
 func MatchOutput(o Output, f gnfmt.Format) string {
-	sort.Slice(o.Matches, func(i, j int) bool {
-		return o.Matches[i].QueryRecord.Index < o.Matches[j].QueryRecord.Index
+	slices.SortFunc(o.Matches, func(a, b Match) int {
+		return cmp.Compare(a.QueryRecord.Index, b.QueryRecord.Index)
 	})
 
 	switch f {

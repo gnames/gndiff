@@ -2,6 +2,7 @@ package web_test
 
 import (
 	"bytes"
+	"fmt"
 	"io"
 	"net/http"
 	"os"
@@ -66,7 +67,6 @@ func TestDiff(t *testing.T) {
 	assert.Nil(err)
 	respBytes, err := io.ReadAll(resp.Body)
 
-	// fmt.Printf("RESP: %#v\n\n", string(respBytes))
 	assert.Nil(err)
 	err = gnfmt.GNjson{}.Decode(respBytes, &response)
 	assert.Nil(err)
@@ -75,6 +75,7 @@ func TestDiff(t *testing.T) {
 	assert.Greater(len(response.Matches), 50)
 	var count int
 	for _, v := range response.Matches {
+		fmt.Println(v.ReferenceRecords[0].MatchType.String())
 		if v.ReferenceRecords[0].MatchType == verifier.PartialExact {
 			count++
 		}

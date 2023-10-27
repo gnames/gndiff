@@ -26,7 +26,7 @@ func (gnd *gndiff) Compare(query, reference []record.Record) (output.Output, err
 	var err error
 	var recs []record.Record
 	res := make([]output.Match, len(query))
-	m := matcher.New()
+	m := matcher.New(gnd.cfg)
 	err = m.Init(reference)
 	if err != nil {
 		return output.Output{}, err

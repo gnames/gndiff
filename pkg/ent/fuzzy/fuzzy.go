@@ -1,7 +1,7 @@
 package fuzzy
 
 import (
-	"sort"
+	"slices"
 
 	"github.com/dvirsky/levenshtein"
 	"github.com/gnames/gndiff/pkg/ent/record"
@@ -23,9 +23,9 @@ func (f *fuzzy) Init(recs []record.Record) error {
 	for i := range recs {
 		stem := recs[i].Canonical.Stemmed
 		stems[i] = stem
-		f.canonicals[stem] = append(f.canonicals[stem], recs[i].Canonical.Simple)
+		f.canonicals[stem] = append(f.canonicals[stem], recs[i].Canonical.Stemmed)
 	}
-	sort.Strings(stems)
+	slices.Sort(stems)
 	f.trie, err = levenshtein.NewMinTree(stems)
 	if err != nil {
 		return err

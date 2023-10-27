@@ -19,9 +19,13 @@ const (
 // - number of characters divided by ed should be bigger than charsPerED
 //
 // It assumes that checks have to be applied only to the second string:
-//  EditDistance("Pomatomus", "Pom atomus")
+//
+//	EditDistance("Pomatomus", "Pom atomus")
+//
 // returns -1
-//  EditDistance("Pom atomus", "Pomatomus")
+//
+//	EditDistance("Pom atomus", "Pomatomus")
+//
 // returns 1
 //
 // It also assumes that number of spaces between words was already

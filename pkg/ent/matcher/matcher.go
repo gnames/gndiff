@@ -1,24 +1,24 @@
 package matcher
 
 import (
+	"github.com/gnames/gndiff/pkg/config"
 	"github.com/gnames/gndiff/pkg/ent/dbase"
-	"github.com/gnames/gndiff/pkg/ent/exact"
 	"github.com/gnames/gndiff/pkg/ent/fuzzy"
 	"github.com/gnames/gndiff/pkg/ent/record"
 	"github.com/gnames/gnlib/ent/verifier"
 )
 
 type matcher struct {
-	db dbase.DBase
-	e  exact.Exact
-	f  fuzzy.Fuzzy
+	cfg config.Config
+	db  dbase.DBase
+	f   fuzzy.Fuzzy
 }
 
-func New() Matcher {
+func New(cfg config.Config) Matcher {
 	res := matcher{
-		db: dbase.New(),
-		e:  exact.New(),
-		f:  fuzzy.New(),
+		cfg: cfg,
+		db:  dbase.New(),
+		f:   fuzzy.New(),
 	}
 	return &res
 }
@@ -26,41 +26,64 @@ func New() Matcher {
 func (m *matcher) Init(recs []record.Record) error {
 	err := m.db.Init(recs)
 	if err == nil {
-		m.e.Init(recs)
 		err = m.f.Init(recs)
 	}
 	return err
 }
 
-func (m *matcher) MatchExact(canonical string) ([]record.Record, error) {
+func (m *matcher) MatchExact(can, stem string) ([]record.Record, error) {
 	var err error
 	var res []record.Record
-	if m.e.Find(canonical) {
-		res, err = m.db.Select(canonical)
+	if len(m.f.FindExact(stem)) > 0 {
+		res, err = m.db.Select(stem)
 	}
 	for i := range res {
-		res[i].MatchType = verifier.Exact
+		var ed int
+		matchType := verifier.Exact
+		if can != res[i].CanonicalSimple {
+			matchType = verifier.Fuzzy
+			ed = fuzzy.EditDistance(
+				can,
+				res[i].CanonicalSimple,
+				true,
+			)
+		}
+		matchType = spGroupMatchType(can, stem, matchType)
+		res[i].MatchType = matchType
+		res[i].EditDistance = ed
 	}
 	return res, err
 }
 
 func (m *matcher) MatchFuzzy(can, stem string) ([]record.Record, error) {
+	var err error
 	var res []record.Record
-	var canonicals []string
-	if canonicals = m.f.FindExact(stem); len(canonicals) > 0 {
-		return m.fetchCanonicals(can, canonicals, true)
+	var resStems []string
+	if resStems = m.f.FindFuzzy(stem); len(resStems) > 0 {
+		res, err = m.fetchFuzzyCanonicals(can, stem, resStems, false)
+		if err != nil {
+			return res, err
+		}
+		for i := range res {
+			matchType := spGroupMatchType(can, stem, res[i].MatchType)
+			res[i].MatchType = matchType
+		}
+
+		return res, err
 	}
-	if canonicals = m.f.FindFuzzy(stem); len(canonicals) > 0 {
-		return m.fetchCanonicals(can, canonicals, false)
-	}
+
 	return res, nil
 }
 
-func (m *matcher) fetchCanonicals(can string, cans []string, noCheck bool) ([]record.Record, error) {
+func (m *matcher) fetchFuzzyCanonicals(
+	can, stem string,
+	resStems []string,
+	noCheck bool,
+) ([]record.Record, error) {
 	var err error
 	var recs, res []record.Record
-	for i := range cans {
-		recs, err = m.db.Select(cans[i])
+	for i := range resStems {
+		recs, err = m.db.Select(resStems[i])
 		if err != nil {
 			return res, err
 		}

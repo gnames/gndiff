@@ -160,7 +160,10 @@ func parse(recs []record.Record) []record.Record {
 	for i := range recs {
 		names[i] = recs[i].Name
 	}
-	cfg := gnparser.NewConfig(gnparser.OptJobsNum(100))
+	cfg := gnparser.NewConfig(
+		gnparser.OptJobsNum(100),
+		gnparser.OptWithSpeciesGroupCut(true),
+	)
 	gnp := gnparser.New(cfg)
 	parsed := gnp.ParseNames(names)
 	for i := range recs {
