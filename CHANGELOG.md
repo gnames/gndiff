@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add: update modules.
+
 ## [v0.3.0] - 2023-10-24 Tue
 
 - Add [#22]: add RESTful API
