@@ -1,7 +1,6 @@
 package matcher_test
 
 import (
-	"fmt"
 	"path/filepath"
 	"testing"
 
@@ -53,13 +52,32 @@ func TestSpGroup(t *testing.T) {
 		initMatcher(t)
 	}
 	var rec record.Record
+
 	rec.Name = "Apteryx mantelli A. D. Bartlett, 1852 mantelli"
 	rec.Parsed = gnp.ParseName(rec.Name)
 	recs, err := m.Match(rec)
 	assert.Nil(err)
-	fmt.Println(recs[0].MatchType.String())
-	assert.Equal(verifier.ExactSpeciesGroup.String(), recs[0].MatchType.String())
+	res := recs[0]
+	assert.Equal(verifier.ExactSpeciesGroup.String(), res.MatchType.String())
+	assert.Equal(0, res.EditDistance)
 
+	rec = record.Record{}
+	rec.Name = "Apteryx mantellus A. D. Bartlett, 1852 mantellus"
+	rec.Parsed = gnp.ParseName(rec.Name)
+	recs, err = m.Match(rec)
+	assert.Nil(err)
+	res = recs[0]
+	assert.Equal(verifier.FuzzySpeciesGroup.String(), res.MatchType.String())
+	assert.Equal(2, res.EditDistance)
+
+	rec = record.Record{}
+	rec.Name = "Apteryx maantelli A. D. Bartlett, 1852 maantelli"
+	rec.Parsed = gnp.ParseName(rec.Name)
+	recs, err = m.Match(rec)
+	assert.Nil(err)
+	res = recs[0]
+	assert.Equal(verifier.FuzzySpeciesGroup.String(), res.MatchType.String())
+	assert.Equal(1, res.EditDistance)
 }
 
 func TestMatchExactFuzzy(t *testing.T) {
@@ -72,10 +90,7 @@ func TestMatchExactFuzzy(t *testing.T) {
 
 	can := "Rhea americana nobilis"
 	canSuffix := "Rhea americanus nobilis"
-	canFuz := "Rhea ameriana nobilis"
 	stemEx := "Rhea american nobil"
-	stemFuz := "Rhea amerian nobil"
-	badStr := "Something irrelevant"
 
 	recs, err = m.MatchExact(can, stemEx)
 	assert.Nil(err)
@@ -90,16 +105,21 @@ func TestMatchExactFuzzy(t *testing.T) {
 	assert.Equal(verifier.Fuzzy, recs[0].MatchType)
 	assert.Equal(2, recs[0].EditDistance)
 
+	canFuz := "Rhea ameriana nobilis"
+	stemFuz := "Rhea amerian nobil"
 	recs, err = m.MatchFuzzy(canFuz, stemFuz)
 	assert.Nil(err)
 	assert.True(len(recs) > 0)
 	assert.Equal(can, recs[0].Canonical.Simple)
 	assert.Equal(1, recs[0].EditDistance)
 
-	recs, err = m.MatchFuzzy(canSuffix, stemFuz)
+	canFuzzy := "Rhea amerianus nobilis"
+	recs, err = m.MatchFuzzy(canFuzzy, stemFuz)
 	assert.Nil(err)
-	assert.True(len(recs) == 0)
+	assert.True(len(recs) > 0)
+	assert.Equal(3, recs[0].EditDistance)
 
+	badStr := "Something irrelevant"
 	recs, err = m.MatchFuzzy(canSuffix, badStr)
 	assert.Nil(err)
 	assert.True(len(recs) == 0)

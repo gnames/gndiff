@@ -1,11 +1,14 @@
 package matcher
 
 import (
+	"strings"
+
 	"github.com/gnames/gndiff/pkg/config"
 	"github.com/gnames/gndiff/pkg/ent/dbase"
 	"github.com/gnames/gndiff/pkg/ent/fuzzy"
 	"github.com/gnames/gndiff/pkg/ent/record"
 	"github.com/gnames/gnlib/ent/verifier"
+	"github.com/gnames/gnparser/ent/stemmer"
 )
 
 type matcher struct {
@@ -40,17 +43,21 @@ func (m *matcher) MatchExact(can, stem string) ([]record.Record, error) {
 
 	for i := range res {
 		var ed int
-		catRes := res[i].CanonicalSimple
-		// exact match can have 3 possibilities
-		// Exact, Fuzzy, ExactSpeciesGroup
-
+		canRes := res[i].CanonicalSimple
 		matchType := verifier.Exact
 
-		matchType = checkSpGrMatch(can, stem, catRes, matchType)
+		// check if match was by species group.
+		matchType, ed = checkSpGrMatch(
+			can, stem, canRes,
+			res[i].EditDistance,
+			matchType,
+		)
 
+		// if did not match to species group, see if exact match by stem
+		// is actually a fuzzy match by simple canonical.
 		if matchType == verifier.Exact {
 			matchType, ed = checkFuzzyMatch(
-				can, catRes, matchType,
+				can, canRes, matchType,
 			)
 		}
 
@@ -71,7 +78,17 @@ func (m *matcher) MatchFuzzy(can, stem string) ([]record.Record, error) {
 			return res, err
 		}
 		for i := range res {
-			matchType := checkSpGrMatch(can, stem, res[i].MatchType)
+			matchType := verifier.Fuzzy
+			canRes := res[i].CanonicalSimple
+			matchType, ed := checkSpGrMatch(
+				can, stem, canRes,
+				res[i].EditDistance,
+				res[i].MatchType,
+			)
+			if matchType == verifier.Fuzzy {
+				ed = fuzzy.EditDistance(can, canRes, true)
+			}
+			res[i].EditDistance = ed
 			res[i].MatchType = matchType
 		}
 
@@ -93,17 +110,50 @@ func (m *matcher) fetchFuzzyCanonicals(
 		if err != nil {
 			return res, err
 		}
-
 		for ii := range recs {
-			ed := fuzzy.EditDistance(can, recs[ii].Canonical.Simple, noCheck)
-			if ed < 0 {
-				continue
-			}
-
-			recs[ii].EditDistance = ed
-			recs[ii].MatchType = verifier.Fuzzy
 			res = append(res, recs[ii])
 		}
 	}
 	return res, err
+}
+
+func checkFuzzyMatch(
+	can, canRes string,
+	mt verifier.MatchTypeValue,
+) (verifier.MatchTypeValue, int) {
+	var ed int
+	if can != canRes {
+		mt = verifier.Fuzzy
+		ed = fuzzy.EditDistance(can, canRes, true)
+	}
+	return mt, ed
+}
+
+func checkSpGrMatch(
+	can, stem, canRes string,
+	ed int,
+	mt verifier.MatchTypeValue,
+) (verifier.MatchTypeValue, int) {
+
+	// stem is shortened for species group trinomials. For example
+	// for `Bubo bubo bubo` stem would be `Bubo bub`, while
+	// stemmer.StemCanonical would return `Bubo bub bub`.
+	if stemmer.StemCanonical(can) == stem {
+		return mt, ed
+	}
+
+	elCan := strings.Split(can, " ")
+	elCanRes := strings.Split(canRes, " ")
+
+	l := min(len(elCan), len(elCanRes))
+
+	can = strings.Join(elCan[:l], " ")
+	canRes = strings.Join(elCanRes[:l], " ")
+
+	if canRes == can {
+		return verifier.ExactSpeciesGroup, ed
+	}
+
+	ed = fuzzy.EditDistance(can, canRes, true)
+	return verifier.FuzzySpeciesGroup, ed
 }

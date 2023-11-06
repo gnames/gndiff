@@ -3,10 +3,8 @@ package matcher
 import (
 	"strings"
 
-	"github.com/gnames/gndiff/pkg/ent/fuzzy"
 	"github.com/gnames/gndiff/pkg/ent/record"
 	"github.com/gnames/gnlib/ent/verifier"
-	"github.com/gnames/gnparser/ent/stemmer"
 )
 
 func (m *matcher) Match(rec record.Record) ([]record.Record, error) {
@@ -66,33 +64,6 @@ func (m *matcher) partialMatch(can, stem string) ([]record.Record, error) {
 	}
 
 	return res, err
-}
-
-func checkFuzzyMatch(
-	can, canRes string,
-	mt verifier.MatchTypeValue,
-) (verifier.MatchTypeValue, int) {
-	var ed int
-	if can != canRes {
-		mt = verifier.Fuzzy
-		ed = fuzzy.EditDistance(can, canRes, true)
-	}
-	return mt, ed
-}
-
-func checkSpGrMatch(
-	can, stem, catRes string,
-	mt verifier.MatchTypeValue,
-) verifier.MatchTypeValue {
-	if stemmer.StemCanonical(can) != stem {
-		switch mt {
-		case verifier.Exact:
-			mt = verifier.ExactSpeciesGroup
-		case verifier.Fuzzy:
-			mt = verifier.FuzzySpeciesGroup
-		}
-	}
-	return mt
 }
 
 func partialCombos(can, stem string) []canPair {
