@@ -1,6 +1,7 @@
 package matcher_test
 
 import (
+	"fmt"
 	"path/filepath"
 	"testing"
 
@@ -46,19 +47,20 @@ func TestMatch(t *testing.T) {
 	assert.Equal(t, verifier.PartialFuzzy, recs[0].MatchType)
 }
 
-// func TestSpGroup(t *testing.T) {
-// 	assert := assert.New(t)
-// 	if !bootstrapped {
-// 		initMatcher(t)
-// 	}
-// 	var rec record.Record
-// 	rec.Name = "Apteryx mantelli A. D. Bartlett, 1852 mantelli"
-// 	rec.Parsed = gnp.ParseName(rec.Name)
-// 	recs, err := m.Match(rec)
-// 	assert.Nil(err)
-// 	assert.Equal(verifier.ExactSpeciesGroup, recs[0].MatchType)
+func TestSpGroup(t *testing.T) {
+	assert := assert.New(t)
+	if !bootstrapped {
+		initMatcher(t)
+	}
+	var rec record.Record
+	rec.Name = "Apteryx mantelli A. D. Bartlett, 1852 mantelli"
+	rec.Parsed = gnp.ParseName(rec.Name)
+	recs, err := m.Match(rec)
+	assert.Nil(err)
+	fmt.Println(recs[0].MatchType.String())
+	assert.Equal(verifier.ExactSpeciesGroup.String(), recs[0].MatchType.String())
 
-// }
+}
 
 func TestMatchExactFuzzy(t *testing.T) {
 	assert := assert.New(t)

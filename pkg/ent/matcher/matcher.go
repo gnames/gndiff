@@ -37,21 +37,27 @@ func (m *matcher) MatchExact(can, stem string) ([]record.Record, error) {
 	if len(m.f.FindExact(stem)) > 0 {
 		res, err = m.db.Select(stem)
 	}
+
 	for i := range res {
 		var ed int
+		catRes := res[i].CanonicalSimple
+		// exact match can have 3 possibilities
+		// Exact, Fuzzy, ExactSpeciesGroup
+
 		matchType := verifier.Exact
-		if can != res[i].CanonicalSimple {
-			matchType = verifier.Fuzzy
-			ed = fuzzy.EditDistance(
-				can,
-				res[i].CanonicalSimple,
-				true,
+
+		matchType = checkSpGrMatch(can, stem, catRes, matchType)
+
+		if matchType == verifier.Exact {
+			matchType, ed = checkFuzzyMatch(
+				can, catRes, matchType,
 			)
 		}
-		matchType = spGroupMatchType(can, stem, matchType)
+
 		res[i].MatchType = matchType
 		res[i].EditDistance = ed
 	}
+
 	return res, err
 }
 
@@ -65,7 +71,7 @@ func (m *matcher) MatchFuzzy(can, stem string) ([]record.Record, error) {
 			return res, err
 		}
 		for i := range res {
-			matchType := spGroupMatchType(can, stem, res[i].MatchType)
+			matchType := checkSpGrMatch(can, stem, res[i].MatchType)
 			res[i].MatchType = matchType
 		}
 

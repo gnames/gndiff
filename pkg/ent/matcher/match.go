@@ -1,9 +1,9 @@
 package matcher
 
 import (
-	"fmt"
 	"strings"
 
+	"github.com/gnames/gndiff/pkg/ent/fuzzy"
 	"github.com/gnames/gndiff/pkg/ent/record"
 	"github.com/gnames/gnlib/ent/verifier"
 	"github.com/gnames/gnparser/ent/stemmer"
@@ -44,7 +44,6 @@ func (m *matcher) partialMatch(can, stem string) ([]record.Record, error) {
 		if len(res) > 0 {
 			matchType := verifier.Exact
 			for ii := range res {
-				fmt.Printf("%s - %s\n", cans[i].can, res[ii].CanonicalSimple)
 				if cans[i].can != res[ii].CanonicalSimple {
 					matchType = verifier.PartialFuzzy
 				}
@@ -69,7 +68,22 @@ func (m *matcher) partialMatch(can, stem string) ([]record.Record, error) {
 	return res, err
 }
 
-func spGroupMatchType(can, stem string, mt verifier.MatchTypeValue) verifier.MatchTypeValue {
+func checkFuzzyMatch(
+	can, canRes string,
+	mt verifier.MatchTypeValue,
+) (verifier.MatchTypeValue, int) {
+	var ed int
+	if can != canRes {
+		mt = verifier.Fuzzy
+		ed = fuzzy.EditDistance(can, canRes, true)
+	}
+	return mt, ed
+}
+
+func checkSpGrMatch(
+	can, stem, catRes string,
+	mt verifier.MatchTypeValue,
+) verifier.MatchTypeValue {
 	if stemmer.StemCanonical(can) != stem {
 		switch mt {
 		case verifier.Exact:
